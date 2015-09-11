@@ -20,17 +20,59 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - JSONModel (1.1.0)
   - MJExtension (2.4.4)
+  - NSObjectExtend (1.7.2):
+    - NSObjectExtend/All (= 1.7.2)
+  - NSObjectExtend/All (1.7.2):
+    - NSObjectExtend/Core
+    - NSObjectExtend/CoreLocation
+    - NSObjectExtend/UIKit
+  - NSObjectExtend/Core (1.7.2)
+  - NSObjectExtend/CoreLocation (1.7.2):
+    - NSObjectExtend/Core
+  - NSObjectExtend/UIKit (1.7.2):
+    - NSObjectExtend/Core
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - SSObject (1.4.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
+  - BlocksKit (~> 2.2.0)
+  - JSONModel (~> 1.1.0)
   - MJExtension (~> 2.4.0)
+  - NSObjectExtend (~> 1.7.0)
+  - ReactiveCocoa (~> 2.5.0)
   - SSObject (~> 1.4.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   MJExtension: fabc9e6084f14363ed6828490a98ee516c9cbbfe
+  NSObjectExtend: 7dec0d688d87c30868fbbd3924789f7f72950c56
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SSObject: 432743dbebfe8169810f23fdb59e5a0721c91741
 
 COCOAPODS: 0.38.2

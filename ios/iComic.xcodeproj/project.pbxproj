@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		54E58A86BFB20AD206EBAEFC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DCBD397A23F16E40A6A26B /* libPods.a */; };
 		5E0F10C41BA2B1F2004432EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F10C31BA2B1F2004432EC /* LaunchScreen.xib */; };
+		B076E1471BA2B65D0097790F /* ICSubCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1461BA2B65D0097790F /* ICSubCategoryItem.m */; settings = {ASSET_TAGS = (); }; };
+		B076E14A1BA2B7790097790F /* ICComicListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1491BA2B7790097790F /* ICComicListItem.m */; settings = {ASSET_TAGS = (); }; };
+		B076E14D1BA2FE990097790F /* ICBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E14C1BA2FE990097790F /* ICBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B0A220451BA1EFEA004F5DC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A220441BA1EFEA004F5DC5 /* main.m */; };
 		B0A220481BA1EFEA004F5DC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A220471BA1EFEA004F5DC5 /* AppDelegate.m */; };
 		B0A2204B1BA1EFEA004F5DC5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A2204A1BA1EFEA004F5DC5 /* ViewController.m */; };
 		B0A2204E1BA1EFEA004F5DC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0A2204C1BA1EFEA004F5DC5 /* Main.storyboard */; };
 		B0A220501BA1EFEA004F5DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0A2204F1BA1EFEA004F5DC5 /* Assets.xcassets */; };
-		B0A2205C1BA1F0FC004F5DC5 /* NetworkDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A2205B1BA1F0FC004F5DC5 /* NetworkDataCenter.m */; };
+		B0A2205C1BA1F0FC004F5DC5 /* ICNetworkDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A2205B1BA1F0FC004F5DC5 /* ICNetworkDataCenter.m */; };
 		B0A2205F1BA289AF004F5DC5 /* ICCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A2205E1BA289AF004F5DC5 /* ICCategoryItem.m */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,12 @@
 		5E0F10C31BA2B1F2004432EC /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		897B264D86013F599A841572 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A677B546B3A00851DAF752BB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B076E1451BA2B65D0097790F /* ICSubCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSubCategoryItem.h; sourceTree = "<group>"; };
+		B076E1461BA2B65D0097790F /* ICSubCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSubCategoryItem.m; sourceTree = "<group>"; };
+		B076E1481BA2B7790097790F /* ICComicListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICComicListItem.h; sourceTree = "<group>"; };
+		B076E1491BA2B7790097790F /* ICComicListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICComicListItem.m; sourceTree = "<group>"; };
+		B076E14B1BA2FE990097790F /* ICBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICBaseViewController.h; sourceTree = "<group>"; };
+		B076E14C1BA2FE990097790F /* ICBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICBaseViewController.m; sourceTree = "<group>"; };
 		B0A220401BA1EFEA004F5DC5 /* iComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A220441BA1EFEA004F5DC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B0A220461BA1EFEA004F5DC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -32,8 +41,8 @@
 		B0A2204D1BA1EFEA004F5DC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0A2204F1BA1EFEA004F5DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0A220541BA1EFEA004F5DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B0A2205A1BA1F0FC004F5DC5 /* NetworkDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDataCenter.h; sourceTree = "<group>"; };
-		B0A2205B1BA1F0FC004F5DC5 /* NetworkDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDataCenter.m; sourceTree = "<group>"; };
+		B0A2205A1BA1F0FC004F5DC5 /* ICNetworkDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNetworkDataCenter.h; sourceTree = "<group>"; };
+		B0A2205B1BA1F0FC004F5DC5 /* ICNetworkDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICNetworkDataCenter.m; sourceTree = "<group>"; };
 		B0A2205D1BA289AF004F5DC5 /* ICCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICCategoryItem.h; sourceTree = "<group>"; };
 		B0A2205E1BA289AF004F5DC5 /* ICCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICCategoryItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,10 +101,16 @@
 				B0A220471BA1EFEA004F5DC5 /* AppDelegate.m */,
 				B0A220491BA1EFEA004F5DC5 /* ViewController.h */,
 				B0A2204A1BA1EFEA004F5DC5 /* ViewController.m */,
+				B076E14B1BA2FE990097790F /* ICBaseViewController.h */,
+				B076E14C1BA2FE990097790F /* ICBaseViewController.m */,
 				B0A2205D1BA289AF004F5DC5 /* ICCategoryItem.h */,
 				B0A2205E1BA289AF004F5DC5 /* ICCategoryItem.m */,
-				B0A2205A1BA1F0FC004F5DC5 /* NetworkDataCenter.h */,
-				B0A2205B1BA1F0FC004F5DC5 /* NetworkDataCenter.m */,
+				B076E1451BA2B65D0097790F /* ICSubCategoryItem.h */,
+				B076E1461BA2B65D0097790F /* ICSubCategoryItem.m */,
+				B076E1481BA2B7790097790F /* ICComicListItem.h */,
+				B076E1491BA2B7790097790F /* ICComicListItem.m */,
+				B0A2205A1BA1F0FC004F5DC5 /* ICNetworkDataCenter.h */,
+				B0A2205B1BA1F0FC004F5DC5 /* ICNetworkDataCenter.m */,
 				B0A2204C1BA1EFEA004F5DC5 /* Main.storyboard */,
 				5E0F10C31BA2B1F2004432EC /* LaunchScreen.xib */,
 				B0A2204F1BA1EFEA004F5DC5 /* Assets.xcassets */,
@@ -221,8 +236,11 @@
 				B0A2204B1BA1EFEA004F5DC5 /* ViewController.m in Sources */,
 				B0A2205F1BA289AF004F5DC5 /* ICCategoryItem.m in Sources */,
 				B0A220481BA1EFEA004F5DC5 /* AppDelegate.m in Sources */,
+				B076E1471BA2B65D0097790F /* ICSubCategoryItem.m in Sources */,
+				B076E14A1BA2B7790097790F /* ICComicListItem.m in Sources */,
 				B0A220451BA1EFEA004F5DC5 /* main.m in Sources */,
-				B0A2205C1BA1F0FC004F5DC5 /* NetworkDataCenter.m in Sources */,
+				B0A2205C1BA1F0FC004F5DC5 /* ICNetworkDataCenter.m in Sources */,
+				B076E14D1BA2FE990097790F /* ICBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

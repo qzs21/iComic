@@ -6,9 +6,9 @@
 //  Copyright © 2015年 Neva. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ICBaseViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : ICBaseViewController
 
 
 @end

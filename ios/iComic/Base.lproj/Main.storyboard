@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eZ6-lS-pbL">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
@@ -32,25 +33,49 @@
                         <viewControllerLayoutGuide type="bottom" id="SYR-8E-72A"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m7c-hJ-W2r">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Su4-eB-Csv">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.56862745100000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="ijq-zs-OSZ"/>
+                                    <constraint firstAttribute="width" constant="70" id="ijq-zs-OSZ"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="oXi-wF-St8">
+                                        <rect key="frame" x="0.0" y="28" width="70" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oXi-wF-St8" id="g7b-O3-Xzn">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Bf3-bf-Fri" id="cGm-QK-j0A"/>
                                     <outlet property="delegate" destination="Bf3-bf-Fri" id="Ha4-C3-mHf"/>
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZHl-VX-txT">
-                                <rect key="frame" x="50" y="0.0" width="550" height="600"/>
+                                <rect key="frame" x="70" y="0.0" width="530" height="536"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="L9Y-0w-bbd">
+                                        <rect key="frame" x="0.0" y="28" width="530" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L9Y-0w-bbd" id="5nZ-cU-7By">
+                                            <rect key="frame" x="0.0" y="0.0" width="530" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Bf3-bf-Fri" id="fxE-N9-Mbr"/>
                                     <outlet property="delegate" destination="Bf3-bf-Fri" id="c4q-YE-AJs"/>
@@ -69,6 +94,7 @@
                             <constraint firstItem="SYR-8E-72A" firstAttribute="top" secondItem="ZHl-VX-txT" secondAttribute="bottom" id="aEj-4h-iGa"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="L5P-hi-LCS"/>
                     <connections>
                         <outlet property="leftTableView" destination="Su4-eB-Csv" id="uFQ-2P-YEC"/>

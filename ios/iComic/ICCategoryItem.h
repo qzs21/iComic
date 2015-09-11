@@ -6,8 +6,23 @@
 //  Copyright © 2015年 Neva. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <JSONModel.h>
 
-@interface ICCategoryItem : NSObject
+#import "ICSubCategoryItem.h"
+
+/// 主分类对象
+@interface ICCategoryItem : JSONModel
+
+/// 分类标题
+@property (nonatomic, strong) NSString * title;
+
+/// 子分类集合
+@property (nonatomic, strong) NSArray <ICSubCategoryItem> * subCategoryItems;
+
+/// 子分类当前选择
+@property (nonatomic, assign) NSUInteger subCategoryItemsIndex;
+
+/// 当前选中的子分类
+@property (nonatomic, readonly) ICSubCategoryItem * currentSelectedSubCategoryItem;
 
 @end
