@@ -13,14 +13,14 @@
 @property (nonatomic, assign) IBOutlet UITableView * leftTableView;
 @property (nonatomic, assign) IBOutlet UITableView * rightTableView;
 
-@property (nonatomic, strong) NSMutableDictionary <NSString*, NSMutableArray *> * leftTableViewItems;
-@property (nonatomic, strong) NSMutableDictionary <NSString*, NSMutableArray *> * rightTableViewItems;
+@property (nonatomic, strong) NSMutableDictionary * leftTableViewItems;
+@property (nonatomic, strong) NSMutableDictionary * rightTableViewItems;
 
 @end
 
 @implementation ViewController
 
-- (NSMutableDictionary <NSString*, NSMutableArray *> *)leftTableViewItems
+- (NSMutableDictionary *)leftTableViewItems
 {
     if (_leftTableViewItems == nil) {
         _leftTableViewItems = [NSMutableDictionary dictionary];
@@ -28,7 +28,7 @@
     return _leftTableViewItems;
 }
 
-- (NSMutableDictionary <NSString*, NSMutableArray *> *)rightTableViewItems
+- (NSMutableDictionary *)rightTableViewItems
 {
     if (_rightTableViewItems == nil) {
         _rightTableViewItems = [NSMutableDictionary dictionary];
