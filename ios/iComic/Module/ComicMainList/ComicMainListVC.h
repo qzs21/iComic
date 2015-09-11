@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ComicMainListVC.h
 //  iComic
 //
 //  Created by Steven on 15/9/11.
@@ -8,7 +8,7 @@
 
 #import "ICBaseViewController.h"
 
-@interface ViewController : ICBaseViewController
+@interface ComicMainListVC : ICBaseViewController
 
 
 @end

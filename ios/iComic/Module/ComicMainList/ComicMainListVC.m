@@ -1,16 +1,16 @@
 //
-//  ViewController.m
+//  ComicMainListVC.m
 //  iComic
 //
 //  Created by Steven on 15/9/11.
 //  Copyright © 2015年 Neva. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ComicMainListVC.h"
 #import "ICCategoryItem.h"
 #import "ICNetworkDataCenter.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ComicMainListVC () <UITableViewDataSource, UITableViewDelegate>
 {
     __strong NSArray * _categoryItems;
     __strong NSArray * _categoryTitleItems;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation ViewController
+@implementation ComicMainListVC
 
 // 获取所有主分类
 - (NSArray *)categoryItems

@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-2146" y="-1389"/>
         </scene>
-        <!--View Controller-->
+        <!--Comic Main ListVC-->
         <scene sceneID="JUl-ce-FDt">
             <objects>
-                <viewController id="Bf3-bf-Fri" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="Bf3-bf-Fri" customClass="ComicMainListVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yc1-1c-p3J"/>
                         <viewControllerLayoutGuide type="bottom" id="SYR-8E-72A"/>
