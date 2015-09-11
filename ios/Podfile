@@ -3,3 +3,4 @@ platform :ios, '7.0'
 pod 'AFNetworking',                 '~> 2.5.0' # Http网络请求
 pod 'SSObject',                     '~> 1.4.0' # 对象序列化
 pod 'MJExtension',					'~> 2.4.0' # 下拉刷新
+pod 'NSObjectExtend',               '~> 1.7.0' # NS系列类添加常用方法

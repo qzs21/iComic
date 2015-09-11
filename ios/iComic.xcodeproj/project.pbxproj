@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		54E58A86BFB20AD206EBAEFC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DCBD397A23F16E40A6A26B /* libPods.a */; };
 		5E0F10C41BA2B1F2004432EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F10C31BA2B1F2004432EC /* LaunchScreen.xib */; };
+		5E0F10C81BA2B3A7004432EC /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F10C71BA2B3A7004432EC /* Detail.storyboard */; };
+		5E0F10CB1BA2BF09004432EC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F10CA1BA2BF09004432EC /* DetailViewController.m */; };
 		B0A220451BA1EFEA004F5DC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A220441BA1EFEA004F5DC5 /* main.m */; };
 		B0A220481BA1EFEA004F5DC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A220471BA1EFEA004F5DC5 /* AppDelegate.m */; };
 		B0A2204B1BA1EFEA004F5DC5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A2204A1BA1EFEA004F5DC5 /* ViewController.m */; };
@@ -21,6 +23,9 @@
 /* Begin PBXFileReference section */
 		54DCBD397A23F16E40A6A26B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0F10C31BA2B1F2004432EC /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		5E0F10C71BA2B3A7004432EC /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		5E0F10C91BA2BF09004432EC /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		5E0F10CA1BA2BF09004432EC /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		897B264D86013F599A841572 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A677B546B3A00851DAF752BB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B0A220401BA1EFEA004F5DC5 /* iComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,8 +101,11 @@
 				B0A2205E1BA289AF004F5DC5 /* ICCategoryItem.m */,
 				B0A2205A1BA1F0FC004F5DC5 /* NetworkDataCenter.h */,
 				B0A2205B1BA1F0FC004F5DC5 /* NetworkDataCenter.m */,
-				B0A2204C1BA1EFEA004F5DC5 /* Main.storyboard */,
 				5E0F10C31BA2B1F2004432EC /* LaunchScreen.xib */,
+				B0A2204C1BA1EFEA004F5DC5 /* Main.storyboard */,
+				5E0F10C71BA2B3A7004432EC /* Detail.storyboard */,
+				5E0F10C91BA2BF09004432EC /* DetailViewController.h */,
+				5E0F10CA1BA2BF09004432EC /* DetailViewController.m */,
 				B0A2204F1BA1EFEA004F5DC5 /* Assets.xcassets */,
 				B0A220541BA1EFEA004F5DC5 /* Info.plist */,
 				B0A220431BA1EFEA004F5DC5 /* Supporting Files */,
@@ -175,6 +183,7 @@
 				B0A220501BA1EFEA004F5DC5 /* Assets.xcassets in Resources */,
 				5E0F10C41BA2B1F2004432EC /* LaunchScreen.xib in Resources */,
 				B0A2204E1BA1EFEA004F5DC5 /* Main.storyboard in Resources */,
+				5E0F10C81BA2B3A7004432EC /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +232,7 @@
 				B0A220481BA1EFEA004F5DC5 /* AppDelegate.m in Sources */,
 				B0A220451BA1EFEA004F5DC5 /* main.m in Sources */,
 				B0A2205C1BA1F0FC004F5DC5 /* NetworkDataCenter.m in Sources */,
+				5E0F10CB1BA2BF09004432EC /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
