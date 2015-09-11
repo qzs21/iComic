@@ -1,0 +1,37 @@
+# 忽略Mac下常见文件，Xcode用户文件，安卓编译文件
+
+# Android
+*.class
+*.apk
+
+# Xcode and CocoaPods
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+xcshareddata/
+.metadata/
+Pods/
+ios/Frameworks/
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+*.swp
+
+
+*.bak
