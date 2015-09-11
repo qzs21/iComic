@@ -7,10 +7,13 @@
 //
 
 #import "DetailViewController.h"
+#import "DetailIntroductionCollectionViewCell.h"
+#import "DetailAnthologyCollectionViewCell.h"
 
 @interface DetailViewController () <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) IBOutlet UICollectionView * collectionView;
+@property (nonatomic, strong) NSDictionary * dataDictionary;
 
 @end
 
@@ -47,7 +50,27 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    switch (indexPath.section) {
+        case 0:
+        {
+            DetailIntroductionCollectionViewCell * introductionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IntroductionCell" forIndexPath:indexPath];
+            introductionCell.iconImageView.image = [UIImage imageNamed:@"introduction.jpg"];
+//            introductionCell.nameLabel.text = @"";
+//            introductionCell.updateNumLabel.text = @"";
+//            introductionCell.introductionLabel.text = @"";
+            
+            return introductionCell;
+        }
+            
+        default:
+        {
+            DetailAnthologyCollectionViewCell * anthologyCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AnthologyCell" forIndexPath:indexPath];
+            anthologyCell.iconImageView.image = [UIImage imageNamed:@"anthology.jpg"];
+            anthologyCell.nameLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+            anthologyCell.updateLabel.text = @"2015-09-11";
+            return anthologyCell;
+        }
+    }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -59,7 +82,7 @@
             break;
             
         default:
-            return CGSizeMake(self.view.frame.size.width/3.0, 100);
+            return CGSizeMake(100, 100);
             break;
     }
 }

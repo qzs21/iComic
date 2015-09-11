@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CgK-S3-dkh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -23,11 +23,11 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kJw-Cg-0wE">
                                     <size key="itemSize" width="600" height="212"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="10"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Mxx-AE-pYt">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IntroductionCell" id="Mxx-AE-pYt" customClass="DetailIntroductionCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -87,8 +87,15 @@
                                             <constraint firstItem="bvD-r7-8Ab" firstAttribute="leading" secondItem="Mxx-AE-pYt" secondAttribute="leading" constant="10" id="zNj-sn-9xn"/>
                                         </constraints>
                                         <size key="customSize" width="600" height="170"/>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="bvD-r7-8Ab" id="PPc-Sh-uqf"/>
+                                            <outlet property="introductionLabel" destination="FBA-UW-c9z" id="qXh-A3-wez"/>
+                                            <outlet property="nameLabel" destination="xUx-n7-Y8a" id="aAr-BC-Rih"/>
+                                            <outlet property="updateNumLabel" destination="JzS-1V-09Q" id="USX-E0-i10"/>
+                                            <outlet property="watchButton" destination="hMa-iE-fiL" id="H8G-hY-YVK"/>
+                                        </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="f3j-Lt-3kL">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnthologyCell" id="f3j-Lt-3kL" customClass="DetailAnthologyCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -129,8 +136,17 @@
                                             <constraint firstItem="9qr-13-H0x" firstAttribute="top" secondItem="f3j-Lt-3kL" secondAttribute="top" id="kIl-RZ-uc6"/>
                                         </constraints>
                                         <size key="customSize" width="100" height="107.5"/>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="9qr-13-H0x" id="589-zh-iaX"/>
+                                            <outlet property="nameLabel" destination="fyF-sa-ZUR" id="tLB-sf-IoA"/>
+                                            <outlet property="updateLabel" destination="sqy-KV-hii" id="2bl-vP-5qw"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="28A-6P-YM3">
+                                    <rect key="frame" x="0.0" y="287.5" width="600" height="10"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="CgK-S3-dkh" id="33r-sp-gfy"/>
                                     <outlet property="delegate" destination="CgK-S3-dkh" id="oRU-qA-b2j"/>
