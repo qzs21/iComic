@@ -70,8 +70,16 @@
     
     self.title = self.episode.title;
     
-    // 布局
+    // 点击时收起或隐藏顶部栏
     @weakify(self);
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+        @strongify(self);
+        self.showTopBar = !self.showTopBar;
+    }];
+    tapGesture.numberOfTapsRequired = 1;
+    [self.tableView addGestureRecognizer:tapGesture];
+    
+    // 布局
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.edges.equalTo(self.view);
@@ -128,11 +136,6 @@
     ICComicImage * comicImage = self.comicPageItems[indexPath.section];
     return (comicImage.height / comicImage.width) * tableView.width;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    self.showTopBar = !self.showTopBar;
-}
-
 //- (UIStatusBarStyle)preferredStatusBarStyle
 //{
 //    return UIStatusBarStyleLightContent;

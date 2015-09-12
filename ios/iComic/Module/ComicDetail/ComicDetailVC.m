@@ -91,11 +91,16 @@
         }
         default:
         {
-            CGFloat w = (width - 10 * 2) / 3;
+            CGFloat w = (width - 10 * 4) / 3;
             return CGSizeMake(w, w);
             break;
         }
     }
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
+{
+    return UIEdgeInsetsMake(0, 10, 0, 10);
 }
 
 #pragma mark - UICollectionViewDelegate
