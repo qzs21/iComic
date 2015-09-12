@@ -18,9 +18,6 @@
 // get_app_launch_info.html?dtype=i
 
 
-
-
-
 // 获取APP启动信息
 //
 // http://182.254.180.202/gw/v100/get_app_launch_info.html?dtype=i
@@ -28,15 +25,17 @@
 
 // 获取漫画详情
 // workid 漫画id
-// get_work.html?dtype=i&uid=&site=&workid=300185
+#define ICAPIComicDetail    @"get_work.html"
 
+// 搜索漫画(分页)
+// search 搜索内容
+#define IAPISearchComic     @"get_works_search.html"
 
-// 搜索漫画
-// search 搜索内容 page 当前页码 rows_per_limit 分页大小
-// get_works_search.html?dtype=i&rows_per_limit=15&search=hao&page=1
+/// 获取区域
+#define ICAPIRegions     @"get_regions.html"
 
-
-
+/// 获取分类
+#define ICAPIGenres      @"get_genres.html"
 
 
 /******************* 最新 ********************/
@@ -91,15 +90,10 @@
 
 
 
-/// 获取区域
-#define ICAPIRegions     @"get_regions.html"
-
-/// 获取分类
-#define ICAPIGenres      @"get_genres.html"
 
 @import Foundation;
 
-typedef void(^ICNetworkDataCenterBlock)(id object);
+typedef void(^ICNetworkDataCenterBlock)(id object, BOOL isCache);
 
 @interface ICNetworkDataCenter : NSObject
 

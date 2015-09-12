@@ -10,6 +10,7 @@
 
 @import AFNetworking;
 @import NSObjectExtend;
+@import TMCache;
 
 /// API 路径
 #define ICAPIBasePath @"http://182.254.180.202/gw/v100"
@@ -23,8 +24,30 @@
 
 @implementation ICNetworkDataCenter
 
-+ (void)GET:(NSString *)URL params:(NSDictionary *)params block:(ICNetworkDataCenterBlock)block
++ (void)GET:(NSString *)URL params:(NSDictionary *)params block:(ICNetworkDataCenterBlock)block;
 {
+    [self GET:URL params:params userCache:YES block:block];
+}
+
++ (void)GET:(NSString *)URL params:(NSDictionary *)params userCache:(BOOL)userCache block:(ICNetworkDataCenterBlock)block
+{
+    NSString * cacheKey = nil;
+
+    // 如果存在缓存，回调缓存数据
+    if (userCache)
+    {
+        cacheKey = [URL stringByAppendingString:SAVE_STRING(params.description)];
+        [[TMCache sharedCache] objectForKey:cacheKey block:^(TMCache *cache, NSString *key, id object) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (object)
+                {
+                    NSLog(@"读取缓存cacheKey: %@", cacheKey);
+                    block(object, YES);
+                }
+            });
+        }];
+    }
+    
     static AFHTTPRequestOperationManager *manager = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
@@ -42,11 +65,25 @@
     [manager GET:URL parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         // 回调成功
         NSLog(@"%@", responseObject);
-        block(responseObject);
+        
+        // 保存缓存
+        if (userCache) {
+            [[TMCache sharedCache]  setObject:responseObject forKey:cacheKey block:nil];
+        }
+        
+        // 回调
+        block(responseObject, NO);
+    
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // TODO 发送失败通知
         // 回调失败
-        block(nil);
+        
+        // 清除缓存
+        if (userCache) {
+            [[TMCache sharedCache] removeObjectForKey:cacheKey block:nil];
+        }
+        // 回调
+        block(nil, NO);
     }];
 }
 
@@ -55,7 +92,7 @@
 {
     NSDictionary * param = @{ICAPIKeyPage: IntToString(page),
                              ICAPIKeyLimit: IntToString(limit)};
-    [self GET:URL params:param block:block];
+    [self GET:URL params:param userCache:page==1 block:block];
 }
 
 + (void)GET:(NSString *)URL page:(NSUInteger)page block:(ICNetworkDataCenterBlock)block;

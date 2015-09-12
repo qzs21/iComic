@@ -1,23 +1,23 @@
 //
-//  DetailViewController.m
+//  ComicDetailVC.
 //  iComic
 //
 //  Created by 韦烽传 on 15/9/11.
 //  Copyright (c) 2015年 Neva. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "ComicDetailVC.h"
 #import "DetailIntroductionCollectionViewCell.h"
 #import "DetailAnthologyCollectionViewCell.h"
 
-@interface DetailViewController () <UICollectionViewDelegateFlowLayout>
+@interface ComicDetailVC () <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) IBOutlet UICollectionView * collectionView;
 @property (nonatomic, strong) NSDictionary * dataDictionary;
 
 @end
 
-@implementation DetailViewController
+@implementation ComicDetailVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

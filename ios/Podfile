@@ -11,3 +11,5 @@ pod 'BlocksKit',                    '~> 2.2.0' # The Objective-C block utilities
 pod 'NSObjectExtend',               '~> 1.7.0' # NS系列类添加常用方法
 pod 'HCSStarRatingView',            '~> 1.4.0' # 星星打分控件，支持Storyboard!
 pod 'SDWebImage',                   '~> 3.7.0' # 图片加载器，自动缓存图片
+pod 'Masonry',                      '~> 0.6.0' # 代码添加约束库
+pod 'TMCache',                      '~> 2.1.0' # 缓存工具，做了内存、磁盘二级缓存，键值对方式使用，全异步式操作！

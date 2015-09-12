@@ -19,13 +19,17 @@
 		B076E1ED1BA306210097790F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B076E1D91BA306210097790F /* Detail.storyboard */; settings = {ASSET_TAGS = (); }; };
 		B076E1EE1BA306210097790F /* DetailAnthologyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1DC1BA306210097790F /* DetailAnthologyCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1EF1BA306210097790F /* DetailIntroductionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1DE1BA306210097790F /* DetailIntroductionCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		B076E1F01BA306210097790F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1E01BA306210097790F /* DetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B076E1F01BA306210097790F /* ComicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1E01BA306210097790F /* ComicDetailVC.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1F11BA306210097790F /* ComicMainList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B076E1E31BA306210097790F /* ComicMainList.storyboard */; settings = {ASSET_TAGS = (); }; };
 		B076E1F21BA306210097790F /* ICCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1E61BA306210097790F /* ICCategoryItem.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1F31BA306210097790F /* ICComicListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1E81BA306210097790F /* ICComicListItem.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1F41BA306210097790F /* ICSubCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1EA1BA306210097790F /* ICSubCategoryItem.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1F51BA306210097790F /* ComicMainListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1EC1BA306210097790F /* ComicMainListVC.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1F81BA33AA10097790F /* ComicMainListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1F71BA33AA10097790F /* ComicMainListCell.m */; settings = {ASSET_TAGS = (); }; };
+		B076E1FC1BA401700097790F /* ComicReaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1FB1BA401700097790F /* ComicReaderVC.m */; settings = {ASSET_TAGS = (); }; };
+		B076E1FF1BA403D20097790F /* ICComicDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1FE1BA403D20097790F /* ICComicDetail.m */; settings = {ASSET_TAGS = (); }; };
+		B076E2021BA41DCF0097790F /* ICComicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E2011BA41DCF0097790F /* ICComicImage.m */; settings = {ASSET_TAGS = (); }; };
+		B076E2051BA41E960097790F /* ICComicEpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E2041BA41E960097790F /* ICComicEpisode.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +52,8 @@
 		B076E1DC1BA306210097790F /* DetailAnthologyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAnthologyCollectionViewCell.m; sourceTree = "<group>"; };
 		B076E1DD1BA306210097790F /* DetailIntroductionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailIntroductionCollectionViewCell.h; sourceTree = "<group>"; };
 		B076E1DE1BA306210097790F /* DetailIntroductionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailIntroductionCollectionViewCell.m; sourceTree = "<group>"; };
-		B076E1DF1BA306210097790F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		B076E1E01BA306210097790F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B076E1DF1BA306210097790F /* ComicDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicDetailVC.h; sourceTree = "<group>"; };
+		B076E1E01BA306210097790F /* ComicDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicDetailVC.m; sourceTree = "<group>"; };
 		B076E1E41BA306210097790F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ComicMainList.storyboard; sourceTree = "<group>"; };
 		B076E1E51BA306210097790F /* ICCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICCategoryItem.h; sourceTree = "<group>"; };
 		B076E1E61BA306210097790F /* ICCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICCategoryItem.m; sourceTree = "<group>"; };
@@ -61,6 +65,14 @@
 		B076E1EC1BA306210097790F /* ComicMainListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicMainListVC.m; sourceTree = "<group>"; };
 		B076E1F61BA33AA10097790F /* ComicMainListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicMainListCell.h; sourceTree = "<group>"; };
 		B076E1F71BA33AA10097790F /* ComicMainListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicMainListCell.m; sourceTree = "<group>"; };
+		B076E1FA1BA401700097790F /* ComicReaderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicReaderVC.h; sourceTree = "<group>"; };
+		B076E1FB1BA401700097790F /* ComicReaderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicReaderVC.m; sourceTree = "<group>"; };
+		B076E1FD1BA403D20097790F /* ICComicDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICComicDetail.h; sourceTree = "<group>"; };
+		B076E1FE1BA403D20097790F /* ICComicDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICComicDetail.m; sourceTree = "<group>"; };
+		B076E2001BA41DCF0097790F /* ICComicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICComicImage.h; sourceTree = "<group>"; };
+		B076E2011BA41DCF0097790F /* ICComicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICComicImage.m; sourceTree = "<group>"; };
+		B076E2031BA41E960097790F /* ICComicEpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICComicEpisode.h; sourceTree = "<group>"; };
+		B076E2041BA41E960097790F /* ICComicEpisode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICComicEpisode.m; sourceTree = "<group>"; };
 		B08CCC9BBE46DDE27FAAB9F8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A220401BA1EFEA004F5DC5 /* iComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -151,6 +163,7 @@
 			children = (
 				B076E1D71BA306210097790F /* ComicDetail */,
 				B076E1E11BA306210097790F /* ComicMainList */,
+				B076E1F91BA4015A0097790F /* ComicReader */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -163,8 +176,8 @@
 				B076E1DC1BA306210097790F /* DetailAnthologyCollectionViewCell.m */,
 				B076E1DD1BA306210097790F /* DetailIntroductionCollectionViewCell.h */,
 				B076E1DE1BA306210097790F /* DetailIntroductionCollectionViewCell.m */,
-				B076E1DF1BA306210097790F /* DetailViewController.h */,
-				B076E1E01BA306210097790F /* DetailViewController.m */,
+				B076E1DF1BA306210097790F /* ComicDetailVC.h */,
+				B076E1E01BA306210097790F /* ComicDetailVC.m */,
 			);
 			path = ComicDetail;
 			sourceTree = "<group>";
@@ -199,8 +212,23 @@
 				B076E1E81BA306210097790F /* ICComicListItem.m */,
 				B076E1E91BA306210097790F /* ICSubCategoryItem.h */,
 				B076E1EA1BA306210097790F /* ICSubCategoryItem.m */,
+				B076E1FD1BA403D20097790F /* ICComicDetail.h */,
+				B076E1FE1BA403D20097790F /* ICComicDetail.m */,
+				B076E2031BA41E960097790F /* ICComicEpisode.h */,
+				B076E2041BA41E960097790F /* ICComicEpisode.m */,
+				B076E2001BA41DCF0097790F /* ICComicImage.h */,
+				B076E2011BA41DCF0097790F /* ICComicImage.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		B076E1F91BA4015A0097790F /* ComicReader */ = {
+			isa = PBXGroup;
+			children = (
+				B076E1FA1BA401700097790F /* ComicReaderVC.h */,
+				B076E1FB1BA401700097790F /* ComicReaderVC.m */,
+			);
+			path = ComicReader;
 			sourceTree = "<group>";
 		};
 		B0A220371BA1EFEA004F5DC5 = {
@@ -353,10 +381,14 @@
 				B076E1F51BA306210097790F /* ComicMainListVC.m in Sources */,
 				B076E1A61BA305060097790F /* ICNetworkDataCenter.m in Sources */,
 				B076E1F21BA306210097790F /* ICCategoryItem.m in Sources */,
+				B076E1FC1BA401700097790F /* ComicReaderVC.m in Sources */,
 				B076E1EE1BA306210097790F /* DetailAnthologyCollectionViewCell.m in Sources */,
 				B076E1AA1BA305060097790F /* main.m in Sources */,
+				B076E2051BA41E960097790F /* ICComicEpisode.m in Sources */,
 				B076E1F81BA33AA10097790F /* ComicMainListCell.m in Sources */,
-				B076E1F01BA306210097790F /* DetailViewController.m in Sources */,
+				B076E2021BA41DCF0097790F /* ICComicImage.m in Sources */,
+				B076E1FF1BA403D20097790F /* ICComicDetail.m in Sources */,
+				B076E1F01BA306210097790F /* ComicDetailVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

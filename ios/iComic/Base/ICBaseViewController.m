@@ -8,6 +8,8 @@
 
 #import "ICBaseViewController.h"
 
+@import JSONModel;
+
 @interface ICBaseViewController ()
 
 @end
@@ -16,6 +18,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self do_once_with_key:do_once_in_this_function_key block:^{
+        // 全局转换键值对应关系
+        JSONKeyMapper * maper =[[JSONKeyMapper alloc] initWithDictionary:
+        @{
+          @"cover": @"image"
+        }];
+        [JSONModel setGlobalKeyMapper:maper];
+    }];
 }
 
 @end

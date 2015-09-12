@@ -10,6 +10,7 @@
 #import "ICCategoryItem.h"
 #import "ICNetworkDataCenter.h"
 #import "ComicMainListCell.h"
+#import "ComicReaderVC.h"
 
 @import MJRefresh;
 
@@ -113,6 +114,8 @@
 {
     [super viewDidLoad];
     
+    self.title = @"iComic";
+    
     // 下拉刷新
     @weakify(self);
     self.rightTableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -126,7 +129,7 @@
         [self reloadAllTableView];
         
         @weakify(self);
-        [self loadComicListWithSubItem:subItem block:^(id object) {
+        [self loadComicListWithSubItem:subItem block:^(id object, BOOL isCache) {
             @strongify(self);
             [self.rightTableView.header endRefreshing];
         }];
@@ -175,20 +178,23 @@
     if (subItem.URL)
     {
         @weakify(self);
-        [ICNetworkDataCenter GET:subItem.URL page:subItem.page block:^(id object) {
+        [ICNetworkDataCenter GET:subItem.URL page:subItem.page block:^(id object, BOOL isCache) {
             @strongify(self);
             
             NSArray * data = [ICComicListItem arrayOfModelsFromDictionaries:object[@"work"]];
-            [subItem.comicItems addObjectsFromArray:data];
             if (subItem.page == 1) {
                 subItem.totalpage = [object[@"totalpage"] integerValue];
+                [subItem.comicItems removeAllObjects];
             }
-            subItem.page++;
+            [subItem.comicItems addObjectsFromArray:data];
+            if (!isCache) {
+                subItem.page++;
+            }
             
             [self updateFooter];
             [self.rightTableView reloadData];
             
-            if (block) { block(object); }
+            if (block) { block(object, isCache); }
         }];
     }
 }
@@ -217,7 +223,7 @@
         {
             ICCategoryItem * item = self.currentCategoryItem;
             @weakify(self);
-            [ICNetworkDataCenter GET:ICAPIGenres params:nil block:^(id object) {
+            [ICNetworkDataCenter GET:ICAPIGenres params:nil block:^(id object, BOOL isCache) {
                 @strongify(self);
                 NSMutableArray * array = [NSMutableArray array];
                 ICSubCategoryItem * subItem = nil;
@@ -302,16 +308,25 @@
         // 刷新界面
         [self reloadAllTableView];
         
-        // 刷新当前界面，并发起请求
-        [self loadComicListWithSubItem:subItem];
+        // 列表下无数据，自动刷新当前界面，并发起请求
+        if (subItem.comicItems.count == 0)
+        {
+            [self loadComicListWithSubItem:subItem];
+        }
     }
     else
     {
         self.currentSelectIndexPath = indexPath;
         
-        // 右边TableView点击
-        UIViewController * vc = [UIViewController getViewControllerFromStoryboard:@"Detail" key:@"DetailViewController"];
+        ICComicListItem * comic = item.currentSelectedSubCategoryItem.comicItems[indexPath.row];
+        ComicReaderVC * vc = [[ComicReaderVC alloc] init];
+        vc.title = comic.title;
+        vc.workid = comic.ID;
         [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
+        
+//        // 右边TableView点击
+//        UIViewController * vc = [UIViewController getViewControllerFromStoryboard:@"Detail" key:@"DetailViewController"];
+//        [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
     }
 }
 
