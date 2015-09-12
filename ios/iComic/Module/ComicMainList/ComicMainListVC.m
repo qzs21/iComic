@@ -131,25 +131,15 @@
             [self.rightTableView.header endRefreshing];
         }];
     }];
+    self.rightTableView.header.automaticallyChangeAlpha = YES;
+    
     
     // 上拉加载更多
     self.rightTableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        
         @strongify(self);
         
         ICSubCategoryItem * subItem = self.currentCategoryItem.currentSelectedSubCategoryItem;
-        if (subItem.page <= subItem.totalpage)
-        {
-            @weakify(self);
-            [self loadComicListWithSubItem:subItem block:^(id object) {
-                @strongify(self);
-                [self.rightTableView.footer endRefreshing];
-            }];
-        }
-        else
-        {
-            [self.rightTableView.footer endRefreshing];
-        }
+        [self loadComicListWithSubItem:subItem];
     }];
 }
 
@@ -168,7 +158,11 @@
 
 - (void)updateFooter
 {
-    // TODO
+    ICSubCategoryItem * subItem = self.currentCategoryItem.currentSelectedSubCategoryItem;
+    [self.rightTableView.footer endRefreshing];
+    if (subItem.page > subItem.totalpage) {
+        [self.rightTableView.footer noticeNoMoreData];
+    }
 }
 
 // 条件合适，获取数据
@@ -289,6 +283,7 @@
         ComicMainListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         cell.titleLab.text = comic.title;
         cell.scoreView.value = comic.score;
+        cell.scoreView.tintColor = ICTintColor;
         [cell.thumbnailImg sd_setImageWithURL:[NSURL URLWithString:comic.thumbnailURL] placeholderImage:nil];
         return cell;
     }
