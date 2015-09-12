@@ -7,8 +7,9 @@
 //
 
 #import "ICNetworkDataCenter.h"
-#import <AFNetworking.h>
-#import <NSObjectExtend.h>
+
+@import AFNetworking;
+@import NSObjectExtend;
 
 /// API 路径
 #define ICAPIBasePath @"http://182.254.180.202/gw/v100"
@@ -52,7 +53,7 @@
 // 请求分页数据
 + (void)GET:(NSString *)URL page:(NSUInteger)page limit:(NSUInteger)limit block:(ICNetworkDataCenterBlock)block
 {
-    NSDictionary * param = @{ICAPIKeyPage: IntToString(page+1),
+    NSDictionary * param = @{ICAPIKeyPage: IntToString(page),
                              ICAPIKeyLimit: IntToString(limit)};
     [self GET:URL params:param block:block];
 }

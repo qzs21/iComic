@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54E58A86BFB20AD206EBAEFC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54DCBD397A23F16E40A6A26B /* libPods.a */; };
+		1120135B34DDE797DEE2C885 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08CCC9BBE46DDE27FAAB9F8 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B076E1A51BA305060097790F /* ICBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1811BA305060097790F /* ICBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1A61BA305060097790F /* ICNetworkDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1831BA305060097790F /* ICNetworkDataCenter.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1A71BA305060097790F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1861BA305060097790F /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
@@ -25,10 +25,10 @@
 		B076E1F31BA306210097790F /* ICComicListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1E81BA306210097790F /* ICComicListItem.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1F41BA306210097790F /* ICSubCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1EA1BA306210097790F /* ICSubCategoryItem.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1F51BA306210097790F /* ComicMainListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1EC1BA306210097790F /* ComicMainListVC.m */; settings = {ASSET_TAGS = (); }; };
+		B076E1F81BA33AA10097790F /* ComicMainListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1F71BA33AA10097790F /* ComicMainListCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		54DCBD397A23F16E40A6A26B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		897B264D86013F599A841572 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A677B546B3A00851DAF752BB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B076E1801BA305060097790F /* ICBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICBaseViewController.h; sourceTree = "<group>"; };
@@ -59,6 +59,9 @@
 		B076E1EA1BA306210097790F /* ICSubCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSubCategoryItem.m; sourceTree = "<group>"; };
 		B076E1EB1BA306210097790F /* ComicMainListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicMainListVC.h; sourceTree = "<group>"; };
 		B076E1EC1BA306210097790F /* ComicMainListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicMainListVC.m; sourceTree = "<group>"; };
+		B076E1F61BA33AA10097790F /* ComicMainListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicMainListCell.h; sourceTree = "<group>"; };
+		B076E1F71BA33AA10097790F /* ComicMainListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicMainListCell.m; sourceTree = "<group>"; };
+		B08CCC9BBE46DDE27FAAB9F8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A220401BA1EFEA004F5DC5 /* iComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -67,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54E58A86BFB20AD206EBAEFC /* libPods.a in Frameworks */,
+				1120135B34DDE797DEE2C885 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +89,7 @@
 		A945501E032373BBC77F42C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				54DCBD397A23F16E40A6A26B /* libPods.a */,
+				B08CCC9BBE46DDE27FAAB9F8 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -180,6 +183,8 @@
 				B076E1E21BA306210097790F /* Base */,
 				B076E1EB1BA306210097790F /* ComicMainListVC.h */,
 				B076E1EC1BA306210097790F /* ComicMainListVC.m */,
+				B076E1F61BA33AA10097790F /* ComicMainListCell.h */,
+				B076E1F71BA33AA10097790F /* ComicMainListCell.m */,
 			);
 			path = ComicMainList;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 				B0A2203D1BA1EFEA004F5DC5 /* Frameworks */,
 				B0A2203E1BA1EFEA004F5DC5 /* Resources */,
 				32AB326ECCAF1657A8C7FA25 /* Copy Pods Resources */,
+				644F86881F2FE8D4D88E8792 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -302,6 +308,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		644F86881F2FE8D4D88E8792 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EE5AFD3DF82BA9F9EA24E69F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,6 +355,7 @@
 				B076E1F21BA306210097790F /* ICCategoryItem.m in Sources */,
 				B076E1EE1BA306210097790F /* DetailAnthologyCollectionViewCell.m in Sources */,
 				B076E1AA1BA305060097790F /* main.m in Sources */,
+				B076E1F81BA33AA10097790F /* ComicMainListCell.m in Sources */,
 				B076E1F01BA306210097790F /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,8 +6,6 @@
 //  Copyright © 2015年 Neva. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 
 
 
@@ -62,7 +60,7 @@
 
 
 /******************* 题材（分类） ********************/
-// genreid 分类id,  rows_per_limit 每页大笑, page 当前页码（从1开始）
+// genreid 分类id,  rows_per_limit 每页, page 当前页码（从1开始）
 #define ICAPITheme   @"get_works_genre.html"
 
 
@@ -99,8 +97,14 @@
 /// 获取分类
 #define ICAPIGenres      @"get_genres.html"
 
+@import Foundation;
+
 typedef void(^ICNetworkDataCenterBlock)(id object);
+
 @interface ICNetworkDataCenter : NSObject
+
+// 发起数据请求
++ (void)GET:(NSString *)URL params:(NSDictionary *)params block:(ICNetworkDataCenterBlock)block;
 
 // 获取分页的数据
 + (void)GET:(NSString *)URL page:(NSUInteger)page limit:(NSUInteger)limit block:(ICNetworkDataCenterBlock)block;

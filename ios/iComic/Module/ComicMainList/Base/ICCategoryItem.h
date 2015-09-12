@@ -6,7 +6,9 @@
 //  Copyright © 2015年 Neva. All rights reserved.
 //
 
-#import <JSONModel.h>
+
+@import JSONModel;
+@import UIKit;
 
 #import "ICSubCategoryItem.h"
 
@@ -18,6 +20,9 @@
 
 /// 子分类集合
 @property (nonatomic, strong) NSArray <ICSubCategoryItem> * subCategoryItems;
+
+/// 列表位置偏移
+@property (nonatomic, assign) CGPoint contentOffset;
 
 /// 子分类当前选择
 @property (nonatomic, assign) NSUInteger subCategoryItemsIndex;
