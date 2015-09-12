@@ -143,7 +143,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.97298318147659302" green="0.95763665437698364" blue="0.91158252954483032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.98838335275650024" green="0.98071020841598511" blue="0.96384257078170776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="9qr-13-H0x" secondAttribute="trailing" id="0a0-6V-0hb"/>
                                             <constraint firstAttribute="trailing" secondItem="sqy-KV-hii" secondAttribute="trailing" constant="4" id="7uw-TL-ano"/>

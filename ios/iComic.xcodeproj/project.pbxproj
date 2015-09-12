@@ -14,8 +14,6 @@
 		B076E1A91BA305060097790F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B076E1881BA305060097790F /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 		B076E1AA1BA305060097790F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1891BA305060097790F /* main.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1B41BA305060097790F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B076E1A11BA305060097790F /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		B076E1B51BA305060097790F /* anthology.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B076E1A31BA305060097790F /* anthology.jpg */; settings = {ASSET_TAGS = (); }; };
-		B076E1B61BA305060097790F /* introduction.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B076E1A41BA305060097790F /* introduction.jpg */; settings = {ASSET_TAGS = (); }; };
 		B076E1ED1BA306210097790F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B076E1D91BA306210097790F /* Detail.storyboard */; settings = {ASSET_TAGS = (); }; };
 		B076E1EE1BA306210097790F /* DetailAnthologyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1DC1BA306210097790F /* DetailAnthologyCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1EF1BA306210097790F /* DetailIntroductionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1DE1BA306210097790F /* DetailIntroductionCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -47,8 +45,6 @@
 		B076E1881BA305060097790F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		B076E1891BA305060097790F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B076E1A11BA305060097790F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B076E1A31BA305060097790F /* anthology.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = anthology.jpg; sourceTree = "<group>"; };
-		B076E1A41BA305060097790F /* introduction.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = introduction.jpg; sourceTree = "<group>"; };
 		B076E1DA1BA306210097790F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Detail.storyboard; sourceTree = "<group>"; };
 		B076E1DB1BA306210097790F /* DetailAnthologyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAnthologyCollectionViewCell.h; sourceTree = "<group>"; };
 		B076E1DC1BA306210097790F /* DetailAnthologyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAnthologyCollectionViewCell.m; sourceTree = "<group>"; };
@@ -119,7 +115,6 @@
 				B076E1841BA305060097790F /* Main */,
 				B076E1D61BA306210097790F /* Module */,
 				B076E1A01BA305060097790F /* Resource */,
-				B076E1A21BA305060097790F /* TempFile */,
 			);
 			path = iComic;
 			sourceTree = "<group>";
@@ -155,15 +150,6 @@
 				B076E1A11BA305060097790F /* Assets.xcassets */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		B076E1A21BA305060097790F /* TempFile */ = {
-			isa = PBXGroup;
-			children = (
-				B076E1A31BA305060097790F /* anthology.jpg */,
-				B076E1A41BA305060097790F /* introduction.jpg */,
-			);
-			path = TempFile;
 			sourceTree = "<group>";
 		};
 		B076E1D61BA306210097790F /* Module */ = {
@@ -319,8 +305,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B076E1B51BA305060097790F /* anthology.jpg in Resources */,
-				B076E1B61BA305060097790F /* introduction.jpg in Resources */,
 				B076E1B41BA305060097790F /* Assets.xcassets in Resources */,
 				B076E1F11BA306210097790F /* ComicMainList.storyboard in Resources */,
 				B076E1ED1BA306210097790F /* Detail.storyboard in Resources */,
