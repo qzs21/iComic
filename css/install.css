@@ -1,0 +1,13 @@
+install-btn {
+  margin: 0 auto;
+  margin-top: 2em;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
+  display: block;
+  line-height: 5em;
+  text-align: center;
+  width: 90%;
+  font-size: 28px;
+  border-radius: 10px;
+}
