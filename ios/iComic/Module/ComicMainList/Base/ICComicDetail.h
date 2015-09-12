@@ -6,12 +6,11 @@
 //  Copyright © 2015年 Neva. All rights reserved.
 //
 
-@import JSONModel;
-
+#import "ICBaseModel.h"
 #import "ICComicImage.h"
 #import "ICComicEpisode.h"
 
-@interface ICComicDetail : JSONModel
+@interface ICComicDetail : ICBaseModel
 
 //@property (nonatomic, strong) BOOL newflag;         ///< 未知？
 //@property (nonatomic, strong) NSString * scflag;    ///< 未知？
@@ -33,7 +32,7 @@
 @property (nonatomic, assign) NSInteger tag;        ///< 标签数量
 @property (nonatomic, strong) NSString * title;     ///< 标题
 @property (nonatomic, strong) NSArray <ICComicEpisode> * volume;     ///< 剧集集合
-@property (nonatomic, assign) NSInteger volumecount;///< 剧集数量
+@property (nonatomic, assign) NSInteger volumecount;///< 章节总数
 @property (nonatomic, strong) NSString * week;      ///< 星期几（名字）
 @property (nonatomic, assign) NSInteger weekid;     ///< 星期几（代码）
 @property (nonatomic, assign) NSString * workid;    ///< 漫画ID

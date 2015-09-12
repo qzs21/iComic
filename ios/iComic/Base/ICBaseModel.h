@@ -1,13 +1,14 @@
 //
-//  ICComicImage.m
+//  ICBaseModel.h
 //  iComic
 //
 //  Created by Steven on 15/9/12.
 //  Copyright © 2015年 Neva. All rights reserved.
 //
 
-#import "ICComicImage.h"
+@import JSONModel;
+@import UIKit;
 
-@implementation ICComicImage
+@interface ICBaseModel : JSONModel
 
 @end

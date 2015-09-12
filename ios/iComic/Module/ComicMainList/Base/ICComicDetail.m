@@ -7,12 +7,8 @@
 //
 
 #import "ICComicDetail.h"
+#import "ICBaseViewController.h"
 
 @implementation ICComicDetail
-
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
 
 @end

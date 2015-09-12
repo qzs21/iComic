@@ -13,3 +13,5 @@ pod 'HCSStarRatingView',            '~> 1.4.0' # 星星打分控件，支持Stor
 pod 'SDWebImage',                   '~> 3.7.0' # 图片加载器，自动缓存图片
 pod 'Masonry',                      '~> 0.6.0' # 代码添加约束库
 pod 'TMCache',                      '~> 2.1.0' # 缓存工具，做了内存、磁盘二级缓存，键值对方式使用，全异步式操作！
+pod 'UITableView+FDTemplateLayoutCell', '~> 1.3.0' # 自动计算Cell高度，带缓存功能，高速！
+pod 'SVProgressHUD',                '~> 1.1.0' # 等待指示

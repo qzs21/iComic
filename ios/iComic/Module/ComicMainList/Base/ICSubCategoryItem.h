@@ -6,16 +6,13 @@
 //  Copyright © 2015年 Neva. All rights reserved.
 //
 
-@import JSONModel;
-@import UIKit;
-
 #import "ICComicListItem.h"
+#import "ICBaseModel.h"
 
 @protocol ICSubCategoryItem <NSObject> @end
 
 /// 子分类对象
-@interface ICSubCategoryItem : JSONModel
-
+@interface ICSubCategoryItem : ICBaseModel
 
 @property (nonatomic, strong) NSString * title; ///< 子分类标题
 @property (nonatomic, strong) NSString * URL; ///< 获取分类下的数据

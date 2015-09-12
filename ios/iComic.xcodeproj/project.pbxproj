@@ -30,6 +30,8 @@
 		B076E1FF1BA403D20097790F /* ICComicDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1FE1BA403D20097790F /* ICComicDetail.m */; settings = {ASSET_TAGS = (); }; };
 		B076E2021BA41DCF0097790F /* ICComicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E2011BA41DCF0097790F /* ICComicImage.m */; settings = {ASSET_TAGS = (); }; };
 		B076E2051BA41E960097790F /* ICComicEpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E2041BA41E960097790F /* ICComicEpisode.m */; settings = {ASSET_TAGS = (); }; };
+		B0CAAB801BA4381000ACDFFF /* ICBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CAAB7F1BA4381000ACDFFF /* ICBaseModel.m */; settings = {ASSET_TAGS = (); }; };
+		B0CAAB831BA4408D00ACDFFF /* ComicReaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CAAB821BA4408D00ACDFFF /* ComicReaderTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,10 @@
 		B076E2041BA41E960097790F /* ICComicEpisode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICComicEpisode.m; sourceTree = "<group>"; };
 		B08CCC9BBE46DDE27FAAB9F8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A220401BA1EFEA004F5DC5 /* iComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0CAAB7E1BA4381000ACDFFF /* ICBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICBaseModel.h; sourceTree = "<group>"; };
+		B0CAAB7F1BA4381000ACDFFF /* ICBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICBaseModel.m; sourceTree = "<group>"; };
+		B0CAAB811BA4408D00ACDFFF /* ComicReaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicReaderTableViewCell.h; sourceTree = "<group>"; };
+		B0CAAB821BA4408D00ACDFFF /* ComicReaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicReaderTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,8 @@
 				B076E1811BA305060097790F /* ICBaseViewController.m */,
 				B076E1821BA305060097790F /* ICNetworkDataCenter.h */,
 				B076E1831BA305060097790F /* ICNetworkDataCenter.m */,
+				B0CAAB7E1BA4381000ACDFFF /* ICBaseModel.h */,
+				B0CAAB7F1BA4381000ACDFFF /* ICBaseModel.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -227,6 +235,8 @@
 			children = (
 				B076E1FA1BA401700097790F /* ComicReaderVC.h */,
 				B076E1FB1BA401700097790F /* ComicReaderVC.m */,
+				B0CAAB811BA4408D00ACDFFF /* ComicReaderTableViewCell.h */,
+				B0CAAB821BA4408D00ACDFFF /* ComicReaderTableViewCell.m */,
 			);
 			path = ComicReader;
 			sourceTree = "<group>";
@@ -384,6 +394,8 @@
 				B076E1FC1BA401700097790F /* ComicReaderVC.m in Sources */,
 				B076E1EE1BA306210097790F /* DetailAnthologyCollectionViewCell.m in Sources */,
 				B076E1AA1BA305060097790F /* main.m in Sources */,
+				B0CAAB801BA4381000ACDFFF /* ICBaseModel.m in Sources */,
+				B0CAAB831BA4408D00ACDFFF /* ComicReaderTableViewCell.m in Sources */,
 				B076E2051BA41E960097790F /* ICComicEpisode.m in Sources */,
 				B076E1F81BA33AA10097790F /* ComicMainListCell.m in Sources */,
 				B076E2021BA41DCF0097790F /* ICComicImage.m in Sources */,

@@ -20,10 +20,4 @@
     return self.subCategoryItems[self.subCategoryItemsIndex];
 }
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
-
-
 @end

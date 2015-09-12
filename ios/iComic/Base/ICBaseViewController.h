@@ -10,13 +10,15 @@
 @import ReactiveCocoa;
 @import NSObjectExtend;
 @import BlocksKit;
-@import SSObject;
 @import SDWebImage;
+@import SVProgressHUD;
 
-
-#define ICTintColor  [UIColor colorWithHexCode:@"007AFF"]
+#define ICTintColor             [UIColor colorWithHexCode:@"007AFF"]
+#define ICBackgroundColor       [UIColor colorWithHexCode:@"F0F0F0"]
+#define ICAPIDateFormat         @"yyyy-MM-dd HH:mm:ss"
 
 #import "ICNetworkDataCenter.h"
+
 
 @interface ICBaseViewController : UIViewController
 

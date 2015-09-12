@@ -9,11 +9,11 @@
 #import "ComicDetailVC.h"
 #import "DetailIntroductionCollectionViewCell.h"
 #import "DetailAnthologyCollectionViewCell.h"
+#import "ComicReaderVC.h"
 
 @interface ComicDetailVC () <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) IBOutlet UICollectionView * collectionView;
-@property (nonatomic, strong) NSDictionary * dataDictionary;
 
 @end
 
@@ -21,7 +21,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    /// 获取详情
+    @weakify(self);
+    [ICNetworkDataCenter GET:ICAPIComicDetail params:@{@"workid": SAVE_STRING(self.detail.workid)} block:^(id object, BOOL isCache) {
+        @strongify(self);
+        self.detail = [[ICComicDetail alloc] initWithDictionary:object error:nil];
+        [self.collectionView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +45,7 @@
             break;
             
         default:
-            return 10;
+            return self.detail.volume.count;
             break;
     }
 }
@@ -53,44 +60,65 @@
     switch (indexPath.section) {
         case 0:
         {
-            DetailIntroductionCollectionViewCell * introductionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IntroductionCell" forIndexPath:indexPath];
-            introductionCell.iconImageView.image = [UIImage imageNamed:@"introduction.jpg"];
-//            introductionCell.nameLabel.text = @"";
-//            introductionCell.updateNumLabel.text = @"";
-//            introductionCell.introductionLabel.text = @"";
-            
-            return introductionCell;
+            DetailIntroductionCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IntroductionCell" forIndexPath:indexPath];
+            cell.contentView.backgroundColor = [UIColor whiteColor];
+            [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:self.detail.image.url]];
+            cell.nameLabel.text = self.detail.title;
+            cell.updateNumLabel.text = [NSString stringWithFormat:@"共%d集", (int)self.detail.volumecount];
+            cell.introductionLabel.text = self.detail.summary;
+            [[[cell.watchButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+                [SVProgressHUD showErrorWithStatus:@"前方正在施工🚧"];
+            }];
+            return cell;
+            break;
         }
-            
-        default:
+        case 1:
         {
-            DetailAnthologyCollectionViewCell * anthologyCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AnthologyCell" forIndexPath:indexPath];
-            anthologyCell.iconImageView.image = [UIImage imageNamed:@"anthology.jpg"];
-            anthologyCell.nameLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-            anthologyCell.updateLabel.text = @"2015-09-11";
-            return anthologyCell;
+            ICComicEpisode * episode = self.detail.volume[indexPath.row];
+            DetailAnthologyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AnthologyCell" forIndexPath:indexPath];
+            [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:episode.image]];
+            cell.nameLabel.text = episode.title;
+            cell.updateLabel.text = [episode.date toAboutTimeString];
+            return cell;
+            break;
         }
+        default: return nil; break;
     }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat width = collectionView.width;
     switch (indexPath.section) {
         case 0:
-            return CGSizeMake(self.view.frame.size.width, 200);
+        {
+            return CGSizeMake(width, 200);
             break;
-            
+        }
         default:
-            return CGSizeMake(100, 100);
+        {
+            CGFloat w = (width - 10 * 2) / 3;
+            return CGSizeMake(w, w);
             break;
+        }
     }
 }
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    switch (indexPath.section) {
+        case 0: break;
+        case 1:
+        {
+            ComicReaderVC * vc = [[ComicReaderVC alloc] init];
+            vc.episode = self.detail.volume[indexPath.row];
+            [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
+            break;
+        }
+        default: break;
+    }
 }
 
 @end

@@ -6,8 +6,12 @@
 //  Copyright (c) 2015年 Neva. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ICBaseViewController.h"
+#import "ICComicDetail.h"
 
-@interface ComicDetailVC : UIViewController
+@interface ComicDetailVC : ICBaseViewController
+
+@property (nonatomic, strong) ICComicDetail * detail; ///< 漫画详情
+//@property (nonatomic, strong) NSString * workid; ///< 漫画ID
 
 @end

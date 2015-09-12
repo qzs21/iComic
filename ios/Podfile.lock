@@ -60,7 +60,9 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - SVProgressHUD (1.1.3)
   - TMCache (2.1.0)
+  - UITableView+FDTemplateLayoutCell (1.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
@@ -72,7 +74,9 @@ DEPENDENCIES:
   - NSObjectExtend (~> 1.7.0)
   - ReactiveCocoa (~> 2.5.0)
   - SDWebImage (~> 3.7.0)
+  - SVProgressHUD (~> 1.1.0)
   - TMCache (~> 2.1.0)
+  - UITableView+FDTemplateLayoutCell (~> 1.3.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -84,6 +88,8 @@ SPEC CHECKSUMS:
   NSObjectExtend: 7dec0d688d87c30868fbbd3924789f7f72950c56
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
+  UITableView+FDTemplateLayoutCell: d5be6056b5060313f5955a2590ecd33142ad713d
 
 COCOAPODS: 0.38.2

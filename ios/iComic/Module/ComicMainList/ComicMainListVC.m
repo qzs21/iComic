@@ -10,7 +10,7 @@
 #import "ICCategoryItem.h"
 #import "ICNetworkDataCenter.h"
 #import "ComicMainListCell.h"
-#import "ComicReaderVC.h"
+#import "ComicDetailVC.h"
 
 @import MJRefresh;
 
@@ -290,7 +290,7 @@
         cell.titleLab.text = comic.title;
         cell.scoreView.value = comic.score;
         cell.scoreView.tintColor = ICTintColor;
-        [cell.thumbnailImg sd_setImageWithURL:[NSURL URLWithString:comic.thumbnailURL] placeholderImage:nil];
+        [cell.thumbnailImg sd_setImageWithURL:[NSURL URLWithString:comic.image.url] placeholderImage:nil];
         return cell;
     }
 }
@@ -319,14 +319,10 @@
         self.currentSelectIndexPath = indexPath;
         
         ICComicListItem * comic = item.currentSelectedSubCategoryItem.comicItems[indexPath.row];
-        ComicReaderVC * vc = [[ComicReaderVC alloc] init];
+        ComicDetailVC * vc = (id)[UIViewController getViewControllerFromStoryboard:@"Detail" key:@"DetailViewController"];
         vc.title = comic.title;
-        vc.workid = comic.ID;
+        vc.detail = [[ICComicDetail alloc] initWithDictionary:comic.toDictionary error:nil];
         [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
-        
-//        // 右边TableView点击
-//        UIViewController * vc = [UIViewController getViewControllerFromStoryboard:@"Detail" key:@"DetailViewController"];
-//        [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
     }
 }
 

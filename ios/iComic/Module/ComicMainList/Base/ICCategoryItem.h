@@ -7,13 +7,11 @@
 //
 
 
-@import JSONModel;
-@import UIKit;
-
+#import "ICBaseModel.h"
 #import "ICSubCategoryItem.h"
 
 /// 主分类对象
-@interface ICCategoryItem : JSONModel
+@interface ICCategoryItem : ICBaseModel
 
 /// 分类标题
 @property (nonatomic, strong) NSString * title;

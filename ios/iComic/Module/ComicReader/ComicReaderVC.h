@@ -7,9 +7,10 @@
 //
 
 #import "ICBaseViewController.h"
+#import "ICComicEpisode.h"
 
 @interface ComicReaderVC : ICBaseViewController
 
-@property (nonatomic, strong) NSString * workid; ///< 漫画ID
+@property (nonatomic, strong) ICComicEpisode * episode; ///< 漫画剧集信息
 
 @end

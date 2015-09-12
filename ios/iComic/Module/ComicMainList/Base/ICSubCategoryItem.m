@@ -10,11 +10,6 @@
 
 @implementation ICSubCategoryItem
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
-
 - (instancetype)init
 {
     if (self = [super init]) {

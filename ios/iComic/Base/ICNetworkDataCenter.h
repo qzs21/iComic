@@ -32,11 +32,14 @@
 #define IAPISearchComic     @"get_works_search.html"
 
 /// 获取区域
-#define ICAPIRegions     @"get_regions.html"
+#define ICAPIRegions        @"get_regions.html"
 
 /// 获取分类
-#define ICAPIGenres      @"get_genres.html"
+#define ICAPIGenres         @"get_genres.html"
 
+/// 获取剧集
+/// workid 漫画ID, volumeid 剧集ID
+#define ICAPIEpisode        @"get_volume.html"
 
 /******************* 最新 ********************/
 
@@ -103,5 +106,6 @@ typedef void(^ICNetworkDataCenterBlock)(id object, BOOL isCache);
 // 获取分页的数据
 + (void)GET:(NSString *)URL page:(NSUInteger)page limit:(NSUInteger)limit block:(ICNetworkDataCenterBlock)block;
 + (void)GET:(NSString *)URL page:(NSUInteger)page block:(ICNetworkDataCenterBlock)block;
+
 
 @end

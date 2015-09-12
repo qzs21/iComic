@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = ICBackgroundColor;
+    
     [self do_once_with_key:do_once_in_this_function_key block:^{
         // 全局转换键值对应关系
         JSONKeyMapper * maper =[[JSONKeyMapper alloc] initWithDictionary:

@@ -10,18 +10,5 @@
 
 @implementation ICComicListItem
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
-
-+(JSONKeyMapper*)keyMapper
-{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"cover.url": @"thumbnailURL",
-                                                       @"volumecount": @"chaptersTotal",
-                                                       @"workid": @"ID",
-                                                       }];
-}
 
 @end
