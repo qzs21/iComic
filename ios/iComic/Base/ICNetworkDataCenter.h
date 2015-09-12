@@ -107,5 +107,4 @@ typedef void(^ICNetworkDataCenterBlock)(id object, BOOL isCache);
 + (void)GET:(NSString *)URL page:(NSUInteger)page limit:(NSUInteger)limit block:(ICNetworkDataCenterBlock)block;
 + (void)GET:(NSString *)URL page:(NSUInteger)page block:(ICNetworkDataCenterBlock)block;
 
-
 @end

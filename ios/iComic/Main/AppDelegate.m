@@ -8,6 +8,12 @@
 
 #import "AppDelegate.h"
 
+@import AFNetworking;
+@import NSObjectExtend;
+@import BlocksKit;
+
+#define CHECK_NEW_VERSION_URL @"https://github.com/qzs21/iComic/raw/master/config/version.json"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +23,41 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer]; // 更换默认的JSON解析器
+    [manager GET:CHECK_NEW_VERSION_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary * data = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        
+        if ([data isKindOfClass:NSDictionary.class])
+        {
+            
+            NSString * build = data[@"base"][@"build"];
+            NSString * version = data[@"base"][@"version"];
+            NSString * info = data[@"base"][@"info"];
+            NSString * url = data[@"base"][@"url"];
+            
+            NSLog(@"[UIDevice appBuildVersion]: %@", [UIDevice appBuildVersion]);
+            NSUInteger currentBuild = [[UIDevice appBuildVersion] integerValue];
+            NSUInteger newBuild = [build integerValue];
+            if (newBuild > currentBuild && url.length)
+            {
+                [[UIAlertView bk_showAlertViewWithTitle:@"有新版本更新哦！"
+                                                message:[NSString stringWithFormat:@"版本:%@(build_%@)\n更新内容:%@", version, build, info]
+                                      cancelButtonTitle:@"取消"
+                                      otherButtonTitles:@[@"更新"]
+                                                handler:^(UIAlertView *alertView, NSInteger buttonIndex)
+                  {
+                      if (buttonIndex)
+                      {
+                          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+                      }
+                  }] show];
+            }
+        }
+    } failure:nil];
+    
     return YES;
 }
 

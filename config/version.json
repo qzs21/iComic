@@ -1,0 +1,8 @@
+{
+	"base" : {
+		"version" : "0.1",
+		"build" : "2",
+		"info" : "App首发！",
+		"url" : "http://qzs21.github.io/iComic/"
+	}
+}
