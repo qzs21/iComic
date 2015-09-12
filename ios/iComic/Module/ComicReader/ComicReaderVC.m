@@ -68,6 +68,8 @@
 
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
+    self.title = self.episode.title;
+    
     // 布局
     @weakify(self);
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
