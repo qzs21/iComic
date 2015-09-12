@@ -109,41 +109,11 @@
     return _categoryTitleItems;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.title = @"iComic";
-    
-    // 下拉刷新
-    @weakify(self);
-    self.rightTableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        @strongify(self);
-        
-        ICSubCategoryItem * subItem = self.currentCategoryItem.currentSelectedSubCategoryItem;
-        subItem.page = 1;
-        subItem.contentOffset = CGPointZero;
-        [subItem.comicItems removeAllObjects];
-        
-        [self reloadAllTableView];
-        
-        @weakify(self);
-        [self loadComicListWithSubItem:subItem block:^(id object, BOOL isCache) {
-            @strongify(self);
-            [self.rightTableView.header endRefreshing];
-        }];
-    }];
-    self.rightTableView.header.automaticallyChangeAlpha = YES;
-    
-    
-    // 上拉加载更多
-    self.rightTableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        @strongify(self);
-        
-        ICSubCategoryItem * subItem = self.currentCategoryItem.currentSelectedSubCategoryItem;
-        [self loadComicListWithSubItem:subItem];
-    }];
 }
 
 
@@ -215,6 +185,42 @@
         @strongify(self);
         self.categoryItemsIndex = x.selectedSegmentIndex;
         
+        @weakify(self);
+        if (self.categoryItemsIndex == 0)
+        {
+            self.rightTableView.header = nil;
+            self.rightTableView.footer = nil;
+        }
+        else
+        {
+            // 下拉刷新
+            self.rightTableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+                @strongify(self);
+                
+                ICSubCategoryItem * subItem = self.currentCategoryItem.currentSelectedSubCategoryItem;
+                subItem.page = 1;
+                subItem.contentOffset = CGPointZero;
+                [subItem.comicItems removeAllObjects];
+                
+                [self reloadAllTableView];
+                
+                @weakify(self);
+                [self loadComicListWithSubItem:subItem block:^(id object, BOOL isCache) {
+                    @strongify(self);
+                    [self.rightTableView.header endRefreshing];
+                }];
+            }];
+            self.rightTableView.header.automaticallyChangeAlpha = YES;
+            
+            // 上拉加载更多
+            self.rightTableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+                @strongify(self);
+                
+                ICSubCategoryItem * subItem = self.currentCategoryItem.currentSelectedSubCategoryItem;
+                [self loadComicListWithSubItem:subItem];
+            }];
+        }
+        
         // 刷新界面
         [self reloadAllTableView];
         
@@ -253,6 +259,30 @@
         }
     }];
     self.navigationItem.titleView = segmented;
+    
+    
+    
+    if (self.categoryItemsIndex == 0)
+    {
+        switch (self.currentCategoryItem.subCategoryItemsIndex)
+        {
+            case 0:
+            {
+                // 读取最近并刷新界面
+                self.currentCategoryItem.currentSelectedSubCategoryItem.comicItems = (id)[ICComicListItem getHistorys];
+                [self.rightTableView reloadData];
+                break;
+            }
+            case 1:
+            {
+                // 读取收藏并刷新界面
+                self.currentCategoryItem.currentSelectedSubCategoryItem.comicItems = (id)[ICComicListItem getFavorite];
+                [self.rightTableView reloadData];
+                break;
+            }
+            default: break;
+        }
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -320,9 +350,10 @@
         
         ICComicListItem * comic = item.currentSelectedSubCategoryItem.comicItems[indexPath.row];
         ComicDetailVC * vc = (id)[UIViewController getViewControllerFromStoryboard:@"Detail" key:@"DetailViewController"];
-        vc.title = comic.title;
         vc.detail = [[ICComicDetail alloc] initWithDictionary:comic.toDictionary error:nil];
         [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
+        
+        [ICComicListItem addHistory:comic];
     }
 }
 

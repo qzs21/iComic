@@ -12,6 +12,5 @@
 @interface ComicDetailVC : ICBaseViewController
 
 @property (nonatomic, strong) ICComicDetail * detail; ///< 漫画详情
-//@property (nonatomic, strong) NSString * workid; ///< 漫画ID
 
 @end

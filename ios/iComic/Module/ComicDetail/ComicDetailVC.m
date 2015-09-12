@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = self.detail.title;
+    
     /// 获取详情
     @weakify(self);
     [ICNetworkDataCenter GET:ICAPIComicDetail params:@{@"workid": SAVE_STRING(self.detail.workid)} block:^(id object, BOOL isCache) {
@@ -31,22 +33,13 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-            return 1;
-            break;
-            
-        default:
-            return self.detail.volume.count;
-            break;
+    switch (section)
+    {
+        case 0: return 1; break;
+        default: return self.detail.volume.count; break;
     }
 }
 
@@ -108,7 +101,8 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
+    switch (indexPath.section)
+    {
         case 0: break;
         case 1:
         {

@@ -14,28 +14,27 @@
 /// 漫画列表元素
 @interface ICComicListItem : ICBaseModel
 
-/// 漫画ID
-@property (nonatomic, strong) NSString * workid;
 
-/// 漫画标题
-@property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) NSString * workid;    ///< 漫画ID
+@property (nonatomic, strong) NSString * title;     ///< 漫画标题
+@property (nonatomic, strong) ICComicImage * image; ///< 漫画缩略图URL
+@property (nonatomic, assign) float score;          ///< 评分
+@property (nonatomic, assign) NSInteger volumecount;///< 章节总数
+@property (nonatomic, strong) NSString * painter;   ///< 漫画绘图作者
+@property (nonatomic, strong) NSString * writer;    ///< 剧情文案作者
+@property (nonatomic, assign) BOOL free;            ///< 免费
 
-/// 漫画缩略图URL
-@property (nonatomic, strong) ICComicImage * image;
++ (void)addHistory:(ICComicListItem *)item;   ///< 添加历史
++ (void)addFavorite:(ICComicListItem *)item;  ///< 添加收藏
 
-/// 评分
-@property (nonatomic, assign) float score;
++ (NSMutableArray *)getHistorys; ///< 获取所有历史
++ (NSMutableArray *)getFavorite; ///< 获取所有收藏
 
-/// 章节总数
-@property (nonatomic, assign) NSInteger volumecount;
++ (void)removeHistory:(ICComicListItem *)item;    ///< 删除历史
++ (void)removeFavorite:(ICComicListItem *)item;   ///< 删除收藏
 
-/// 漫画绘图作者
-@property (nonatomic, strong) NSString * painter;
++ (void)removeAllHistorys;    ///< 删除所有历史
++ (void)removeAllFavorites;   ///< 删除所有收藏
 
-/// 剧情文案作者
-@property (nonatomic, strong) NSString * writer;
-
-/// 免费
-@property (nonatomic, assign) BOOL free;
 
 @end
