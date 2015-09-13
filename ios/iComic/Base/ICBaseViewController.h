@@ -12,6 +12,8 @@
 @import BlocksKit;
 @import SDWebImage;
 @import SVProgressHUD;
+@import Masonry;
+
 
 #define ICTintColor             [UIColor colorWithHexCode:@"007AFF"]
 #define ICBackgroundColor       [UIColor colorWithHexCode:@"F0F0F0"]

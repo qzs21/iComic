@@ -12,6 +12,8 @@
 
 @interface ICBaseViewController ()
 
+@property (nonatomic, strong) UIView * leftView; ///< 修复右边返回手势冲突
+
 @end
 
 @implementation ICBaseViewController
@@ -29,6 +31,22 @@
         }];
         [JSONModel setGlobalKeyMapper:maper];
     }];
+    
+    _leftView = [[UIView alloc] init];
+    [self.view addSubview:_leftView];
+    _leftView.backgroundColor = [UIColor clearColor];
+    [_leftView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@0);
+        make.top.equalTo(@0);
+        make.bottom.equalTo(@0);
+        make.width.equalTo(@12);
+    }];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    [self.view bringSubviewToFront:_leftView];
 }
 
 @end

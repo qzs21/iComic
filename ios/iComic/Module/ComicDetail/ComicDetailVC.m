@@ -19,6 +19,11 @@
 
 @implementation ComicDetailVC
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.collectionView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,6 +38,12 @@
             [self.collectionView reloadData];
         }
     }];
+    
+    // 捕获屏幕旋转
+    [[NSNotificationCenter defaultCenter] addObserver:self.collectionView
+                                             selector:@selector(reloadData)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
 }
 
 #pragma mark - UICollectionViewDataSource
