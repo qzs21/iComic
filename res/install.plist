@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-<key>items</key>
-<array>
-<dict>
-<key>assets</key>
-<array>
-<dict>
-<key>kind</key>
-<string>software-package</string>
-<key>url</key>
-<string>http://qzs21.github.io/iComic/res/iComic.ipa</string>
-</dict>
-<dict>
-<key>kind</key>
-<string>display-image</string>
-<key>needs-shine</key>
-<true/>
-<key>url</key>
-<string>http://qzs21.github.io/iComic/res/180.png</string>
-</dict>
-</array>
-<key>metadata</key>
-<dict>
-<key>bundle-identifier</key>
-<string>cn.ineva.iComic</string>
-<key>bundle-version</key>
-<string>0.1</string>
-<key>kind</key>
-<string>software</string>
-<key>title</key>
-<string>iComic</string>
-</dict>
-</dict>
-</array>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>assets</key>
+			<array>
+				<dict>
+					<key>kind</key>
+					<string>software-package</string>
+					<key>url</key>
+					<string>http://qzs21.github.io/iComic/res/iComic.ipa</string>
+				</dict>
+				<dict>
+					<key>kind</key>
+					<string>display-image</string>
+					<key>needs-shine</key>
+					<true/>
+					<key>url</key>
+					<string>http://qzs21.github.io/iComic/res/180.png</string>
+				</dict>
+			</array>
+			<key>metadata</key>
+			<dict>
+				<key>bundle-identifier</key>
+				<string>cn.ineva.iComic</string>
+				<key>bundle-version</key>
+				<string>0.9.3</string>
+				<key>kind</key>
+				<string>software</string>
+				<key>title</key>
+				<string>iComic</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
