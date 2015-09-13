@@ -116,7 +116,6 @@
                 else
                 {
                     episode = self.detail.volume[0];
-                    self.lastReadIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
                     text = [NSString stringWithFormat:@"开始%@", episode.title];
                 }
             }
@@ -196,6 +195,9 @@
     vc.episode = self.detail.volume[row];
     [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
     
+    // 保存最后一次阅读到剧集
+    self.lastReadIndexPath = [NSIndexPath indexPathForRow:row inSection:1];
+    
     // 纪录历史
     [ICComicListItem addHistory:self.listItem];
 }
@@ -207,7 +209,6 @@
         case 1:
         {
             [self goReaderWithRow:indexPath.row];
-            self.lastReadIndexPath = indexPath;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.collectionView reloadData];
             });

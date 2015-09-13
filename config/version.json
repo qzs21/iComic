@@ -1,7 +1,7 @@
 {
 	"base" : {
-		"version" : "0.9.4",
-		"build" : "4",
+		"version" : "0.9.5",
+		"build" : "5",
 		"info" : "1.增加收藏功能\n2.增加自动保存阅读进度\n3.增加快捷阅读按钮\n4.增加网络等待指示器",
 		"url" : "http://qzs21.github.io/iComic/"
 	}
