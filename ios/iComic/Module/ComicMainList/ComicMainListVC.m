@@ -151,19 +151,21 @@
         [ICNetworkDataCenter GET:subItem.URL page:subItem.page block:^(id object, BOOL isCache) {
             @strongify(self);
             
-            NSArray * data = [ICComicListItem arrayOfModelsFromDictionaries:object[@"work"]];
-            if (subItem.page == 1) {
-                subItem.totalpage = [object[@"totalpage"] integerValue];
-                [subItem.comicItems removeAllObjects];
+            if (object)
+            {
+                NSArray * data = [ICComicListItem arrayOfModelsFromDictionaries:object[@"work"]];
+                if (subItem.page == 1) {
+                    subItem.totalpage = [object[@"totalpage"] integerValue];
+                    [subItem.comicItems removeAllObjects];
+                }
+                [subItem.comicItems addObjectsFromArray:data];
+                if (!isCache) {
+                    subItem.page++;
+                }
+                
+                [self updateFooter];
+                [self.rightTableView reloadData];
             }
-            [subItem.comicItems addObjectsFromArray:data];
-            if (!isCache) {
-                subItem.page++;
-            }
-            
-            [self updateFooter];
-            [self.rightTableView reloadData];
-            
             if (block) { block(object, isCache); }
         }];
     }
@@ -356,6 +358,37 @@
         [ICComicListItem addHistory:comic];
     }
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.categoryItemsIndex == 0;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    ICSubCategoryItem * item = self.currentCategoryItem.currentSelectedSubCategoryItem;
+    ICComicListItem * listItem = item.comicItems[indexPath.row];
+    if (self.currentCategoryItem.subCategoryItemsIndex == 0)
+    {
+        // 删除历史
+        [ICComicListItem removeHistory:listItem];
+    }
+    else
+    {
+        // 删除收藏
+        [ICComicListItem removeFavorite:listItem];
+    }
+    [item.comicItems removeObject:listItem];
+    [self.rightTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

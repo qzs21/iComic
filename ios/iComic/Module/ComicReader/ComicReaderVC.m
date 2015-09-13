@@ -90,9 +90,11 @@
                              @"volumeid": SAVE_STRING(self.episode.volumeid)};
     [ICNetworkDataCenter GET:ICAPIEpisode params:param block:^(id object, BOOL isCache) {
         
-        self.comicPageItems = [ICComicImage arrayOfModelsFromDictionaries:object[@"page"]];
-        
-        [self.tableView reloadData];
+        if (object) {
+            self.comicPageItems = [ICComicImage arrayOfModelsFromDictionaries:object[@"page"]];
+            
+            [self.tableView reloadData];
+        }
     }];
 }
 

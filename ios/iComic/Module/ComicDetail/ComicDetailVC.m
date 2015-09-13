@@ -28,8 +28,10 @@
     @weakify(self);
     [ICNetworkDataCenter GET:ICAPIComicDetail params:@{@"workid": SAVE_STRING(self.detail.workid)} block:^(id object, BOOL isCache) {
         @strongify(self);
-        self.detail = [[ICComicDetail alloc] initWithDictionary:object error:nil];
-        [self.collectionView reloadData];
+        if (object) {
+            self.detail = [[ICComicDetail alloc] initWithDictionary:object error:nil];
+            [self.collectionView reloadData];
+        }
     }];
 }
 
