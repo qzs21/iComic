@@ -36,21 +36,48 @@
 {
     NSMutableArray * array = [self getCacheArrayWithKey:key];
     
-    ICComicListItem * oldItem = nil;
-    for (ICComicListItem * i in array)
+    // 已经存在纪录删除，后面重新添加，移到前面
+    if ([self hasCacheItem:item withKey:key])
     {
-        if ([i.workid isEqualToString:item.workid])
+        for (ICComicListItem * i in array)
         {
-            oldItem = i;
-            break;
+            if ([i.workid isEqualToString:item.workid])
+            {
+                [array removeObject:i];
+                break;
+            }
         }
     }
-    if (oldItem)
-    {
-        [array removeObject:oldItem];
-    }
+    
+    // 没有纪录则添加
     [array insertObject:item atIndex:0];
     [self saveCacheArray:array withKey:key];
+}
+
+// 遍历Cache数组
++ (void)ergodicCacheWithKey:(NSString *)key block:(BOOL(^)(NSMutableArray * array, ICComicListItem * i))block
+{
+    NSMutableArray * array = [self getCacheArrayWithKey:key];
+    BOOL needContinue;
+    for (ICComicListItem * i in array)
+    {
+        needContinue = block(array, i);
+        if (!needContinue) { break; }
+    }
+}
+
++ (BOOL)hasCacheItem:(ICComicListItem *)item withKey:(NSString *)key;
+{
+    __block BOOL has = NO;
+    [self ergodicCacheWithKey:key block:^(NSMutableArray *array, ICComicListItem *i) {
+        if ([i.workid isEqualToString:item.workid])
+        {
+            has = YES;
+            return NO;
+        }
+        return YES;
+    }];
+    return has;
 }
 
 + (void)addHistory:(ICComicListItem *)item;   ///< 添加历史
@@ -75,16 +102,28 @@
 
 + (void)removeHistory:(ICComicListItem *)item;    ///< 删除历史
 {
-    NSMutableArray * array = [self getCacheArrayWithKey:ICComicEpisodeHistoryKey];
-    [array removeObject:item];
-    [self saveCacheArray:array withKey:ICComicEpisodeHistoryKey];
+    [self ergodicCacheWithKey:ICComicEpisodeHistoryKey block:^BOOL(NSMutableArray *array, ICComicListItem *i) {
+        if ([i.workid isEqualToString:item.workid])
+        {
+            [array removeObject:i];
+            [self saveCacheArray:array withKey:ICComicEpisodeHistoryKey];
+            return NO;
+        }
+        return YES;
+    }];
 }
 
 + (void)removeFavorite:(ICComicListItem *)item;   ///< 删除收藏
 {
-    NSMutableArray * array = [self getCacheArrayWithKey:ICComicEpisodeHistoryKey];
-    [array removeObject:item];
-    [self saveCacheArray:array withKey:ICComicEpisodeFavoriteKey];
+    [self ergodicCacheWithKey:ICComicEpisodeFavoriteKey block:^BOOL(NSMutableArray *array, ICComicListItem *i) {
+        if ([i.workid isEqualToString:item.workid])
+        {
+            [array removeObject:i];
+            [self saveCacheArray:array withKey:ICComicEpisodeFavoriteKey];
+            return NO;
+        }
+        return YES;
+    }];
 }
 
 + (void)removeAllHistorys;    ///< 删除所有历史
@@ -96,10 +135,18 @@
 
 + (void)removeAllFavorites;   ///< 删除所有收藏
 {
-    NSMutableArray * array = [self getCacheArrayWithKey:ICComicEpisodeHistoryKey];
+    NSMutableArray * array = [self getCacheArrayWithKey:ICComicEpisodeFavoriteKey];
     [array removeAllObjects];
     [self saveCacheArray:array withKey:ICComicEpisodeFavoriteKey];
-    
+}
+
++ (BOOL)hasHistory:(ICComicListItem *)item; ///< 是否有此历史纪录
+{
+    return [self hasCacheItem:item withKey:ICComicEpisodeHistoryKey];
+}
++ (BOOL)hasFavorite:(ICComicListItem *)item; ///< 是否有该收藏纪录
+{
+    return [self hasCacheItem:item withKey:ICComicEpisodeFavoriteKey];
 }
 
 @end

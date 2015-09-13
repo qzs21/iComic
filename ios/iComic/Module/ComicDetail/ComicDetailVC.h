@@ -8,9 +8,11 @@
 
 #import "ICBaseViewController.h"
 #import "ICComicDetail.h"
+#import "ICComicListItem.h"
 
 @interface ComicDetailVC : ICBaseViewController
 
 @property (nonatomic, strong) ICComicDetail * detail; ///< 漫画详情
+@property (nonatomic, strong) ICComicListItem * listItem; ///< 列表中的信息
 
 @end

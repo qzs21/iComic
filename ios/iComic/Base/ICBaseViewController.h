@@ -14,13 +14,8 @@
 @import SVProgressHUD;
 @import Masonry;
 
-
-#define ICTintColor             [UIColor colorWithHexCode:@"007AFF"]
-#define ICBackgroundColor       [UIColor colorWithHexCode:@"F0F0F0"]
-#define ICAPIDateFormat         @"yyyy-MM-dd HH:mm:ss"
-
+#import "ICColor.h"
 #import "ICNetworkDataCenter.h"
-
 
 @interface ICBaseViewController : UIViewController
 

@@ -75,6 +75,24 @@
             [[[cell.watchButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
                 [SVProgressHUD showErrorWithStatus:@"前方正在施工🚧"];
             }];
+            
+            // 处理收藏按钮
+            BOOL hasStar = [ICComicListItem hasFavorite:self.listItem];
+            cell.starView.progress = hasStar ? 1.f : 0.f;
+            @weakify(self);
+            [[[cell.starView rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+                @strongify(self);
+                if (hasStar)
+                {
+                    [ICComicListItem removeFavorite:self.listItem];
+                }
+                else
+                {
+                    NSLog(@"addFavorite");
+                    [ICComicListItem addFavorite:self.listItem];
+                }
+                [self.collectionView reloadData];
+            }];
             return cell;
             break;
         }
@@ -127,6 +145,9 @@
             ComicReaderVC * vc = [[ComicReaderVC alloc] init];
             vc.episode = self.detail.volume[indexPath.row];
             [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
+            
+            // 纪录历史
+            [ICComicListItem addHistory:self.listItem];
             break;
         }
         default: break;

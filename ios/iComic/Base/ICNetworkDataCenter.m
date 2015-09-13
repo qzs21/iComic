@@ -21,7 +21,6 @@
 #define ICAPIKeyValueIPhone      @"i"        /// iPhone 固定参数
 
 
-
 @implementation ICNetworkDataCenter
 
 + (void)GET:(NSString *)URL params:(NSDictionary *)params block:(ICNetworkDataCenterBlock)block;
@@ -42,7 +41,9 @@
                 if (object)
                 {
                     NSLog(@"读取缓存cacheKey: %@", cacheKey);
-                    block(object, YES);
+                    if (block) {
+                        block(object, YES);
+                    }
                 }
             });
         }];
@@ -72,7 +73,9 @@
         }
         
         // 回调
-        block(responseObject, NO);
+        if (block) {
+            block(responseObject, NO);
+        }
     
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // TODO 发送失败通知
@@ -82,8 +85,11 @@
         if (userCache) {
             [[TMCache sharedCache] removeObjectForKey:cacheKey block:nil];
         }
+        
         // 回调
-        block(nil, NO);
+        if (block) {
+            block(nil, NO);
+        }
     }];
 }
 

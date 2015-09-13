@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1120135B34DDE797DEE2C885 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08CCC9BBE46DDE27FAAB9F8 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B0685D7D1BA5C2E800B4EDC6 /* ICStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0685D7C1BA5C2E800B4EDC6 /* ICStarView.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1A51BA305060097790F /* ICBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1811BA305060097790F /* ICBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1A61BA305060097790F /* ICNetworkDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1831BA305060097790F /* ICNetworkDataCenter.m */; settings = {ASSET_TAGS = (); }; };
 		B076E1A71BA305060097790F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E1861BA305060097790F /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
@@ -30,11 +31,16 @@
 		B076E2051BA41E960097790F /* ICComicEpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = B076E2041BA41E960097790F /* ICComicEpisode.m */; settings = {ASSET_TAGS = (); }; };
 		B0CAAB801BA4381000ACDFFF /* ICBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CAAB7F1BA4381000ACDFFF /* ICBaseModel.m */; settings = {ASSET_TAGS = (); }; };
 		B0CAAB831BA4408D00ACDFFF /* ComicReaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CAAB821BA4408D00ACDFFF /* ComicReaderTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		B0F304A51BA58BA600C12088 /* ICView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F304A41BA58BA600C12088 /* ICView.m */; settings = {ASSET_TAGS = (); }; };
+		B0F304A81BA58BD800C12088 /* ICHeartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F304A71BA58BD800C12088 /* ICHeartView.m */; settings = {ASSET_TAGS = (); }; };
+		B0F304AB1BA58CA300C12088 /* ICColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F304AA1BA58CA300C12088 /* ICColor.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		897B264D86013F599A841572 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A677B546B3A00851DAF752BB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B0685D7B1BA5C2E800B4EDC6 /* ICStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICStarView.h; sourceTree = "<group>"; };
+		B0685D7C1BA5C2E800B4EDC6 /* ICStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICStarView.m; sourceTree = "<group>"; };
 		B076E1801BA305060097790F /* ICBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICBaseViewController.h; sourceTree = "<group>"; };
 		B076E1811BA305060097790F /* ICBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICBaseViewController.m; sourceTree = "<group>"; };
 		B076E1821BA305060097790F /* ICNetworkDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNetworkDataCenter.h; sourceTree = "<group>"; };
@@ -77,6 +83,12 @@
 		B0CAAB7F1BA4381000ACDFFF /* ICBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICBaseModel.m; sourceTree = "<group>"; };
 		B0CAAB811BA4408D00ACDFFF /* ComicReaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicReaderTableViewCell.h; sourceTree = "<group>"; };
 		B0CAAB821BA4408D00ACDFFF /* ComicReaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicReaderTableViewCell.m; sourceTree = "<group>"; };
+		B0F304A31BA58BA600C12088 /* ICView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICView.h; sourceTree = "<group>"; };
+		B0F304A41BA58BA600C12088 /* ICView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICView.m; sourceTree = "<group>"; };
+		B0F304A61BA58BD800C12088 /* ICHeartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICHeartView.h; sourceTree = "<group>"; };
+		B0F304A71BA58BD800C12088 /* ICHeartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICHeartView.m; sourceTree = "<group>"; };
+		B0F304A91BA58CA300C12088 /* ICColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICColor.h; sourceTree = "<group>"; };
+		B0F304AA1BA58CA300C12088 /* ICColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICColor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +140,14 @@
 				B076E1831BA305060097790F /* ICNetworkDataCenter.m */,
 				B0CAAB7E1BA4381000ACDFFF /* ICBaseModel.h */,
 				B0CAAB7F1BA4381000ACDFFF /* ICBaseModel.m */,
+				B0F304A31BA58BA600C12088 /* ICView.h */,
+				B0F304A41BA58BA600C12088 /* ICView.m */,
+				B0F304A61BA58BD800C12088 /* ICHeartView.h */,
+				B0F304A71BA58BD800C12088 /* ICHeartView.m */,
+				B0685D7B1BA5C2E800B4EDC6 /* ICStarView.h */,
+				B0685D7C1BA5C2E800B4EDC6 /* ICStarView.m */,
+				B0F304A91BA58CA300C12088 /* ICColor.h */,
+				B0F304AA1BA58CA300C12088 /* ICColor.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -372,14 +392,18 @@
 				B076E1F41BA306210097790F /* ICSubCategoryItem.m in Sources */,
 				B076E1F31BA306210097790F /* ICComicListItem.m in Sources */,
 				B076E1EF1BA306210097790F /* DetailIntroductionCollectionViewCell.m in Sources */,
+				B0F304A81BA58BD800C12088 /* ICHeartView.m in Sources */,
 				B076E1A51BA305060097790F /* ICBaseViewController.m in Sources */,
 				B076E1F51BA306210097790F /* ComicMainListVC.m in Sources */,
+				B0F304AB1BA58CA300C12088 /* ICColor.m in Sources */,
 				B076E1A61BA305060097790F /* ICNetworkDataCenter.m in Sources */,
 				B076E1F21BA306210097790F /* ICCategoryItem.m in Sources */,
+				B0685D7D1BA5C2E800B4EDC6 /* ICStarView.m in Sources */,
 				B076E1FC1BA401700097790F /* ComicReaderVC.m in Sources */,
 				B076E1EE1BA306210097790F /* DetailAnthologyCollectionViewCell.m in Sources */,
 				B076E1AA1BA305060097790F /* main.m in Sources */,
 				B0CAAB801BA4381000ACDFFF /* ICBaseModel.m in Sources */,
+				B0F304A51BA58BA600C12088 /* ICView.m in Sources */,
 				B0CAAB831BA4408D00ACDFFF /* ComicReaderTableViewCell.m in Sources */,
 				B076E2051BA41E960097790F /* ICComicEpisode.m in Sources */,
 				B076E1F81BA33AA10097790F /* ComicMainListCell.m in Sources */,

@@ -10,18 +10,26 @@
 #import "ComicReaderTableViewCell.h"
 
 @import Masonry;
+@import TMCache;
 
 @interface ComicReaderVC () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView * tableView;
 
-@property (nonatomic, strong) NSArray * comicPageItems; // 漫画内容页
+@property (nonatomic, strong) NSArray * comicPageItems; ///< 漫画内容页
 
-@property (nonatomic, assign) BOOL showTopBar; // 显示顶部栏
+@property (nonatomic, assign) BOOL showTopBar; ///< 显示顶部栏
+
+@property (nonatomic, strong) NSString * cacheKey; ///< 缓存Key
 
 @end
 
 @implementation ComicReaderVC
+
+- (void)dealloc
+{
+    [[TMCache sharedCache] setObject:[NSValue valueWithCGPoint:self.tableView.contentOffset] forKey:self.cacheKey];
+}
 
 - (UITableView *)tableView
 {
@@ -39,11 +47,26 @@
     return _tableView;
 }
 
+- (NSString *)cacheKey
+{
+    if (_cacheKey == nil)
+    {
+        _cacheKey = [NSString stringWithFormat:@"ComicReaderVC.workid.%@.volumeid.%@", self.episode.workid, self.episode.volumeid];
+    }
+    return _cacheKey;
+}
+
 - (void)setShowTopBar:(BOOL)showTopBar
 {
     _showTopBar = showTopBar;
     [self setNeedsStatusBarAppearanceUpdate];
     [self.navigationController setNavigationBarHidden:!showTopBar animated:YES];
+    
+    
+    CGSize size = self.tableView.contentSize;
+    CGPoint contentOffset = self.tableView.contentOffset;
+    self.tableView.contentOffset = CGPointMake(MIN(size.width, contentOffset.x), MIN(size.height, contentOffset.y));
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -89,11 +112,23 @@
     NSDictionary * param = @{@"workid": SAVE_STRING(self.episode.workid),
                              @"volumeid": SAVE_STRING(self.episode.volumeid)};
     [ICNetworkDataCenter GET:ICAPIEpisode params:param block:^(id object, BOOL isCache) {
-        
+        @strongify(self);
         if (object) {
             self.comicPageItems = [ICComicImage arrayOfModelsFromDictionaries:object[@"page"]];
-            
             [self.tableView reloadData];
+            @weakify(self);
+            [[TMCache sharedCache] objectForKey:self.cacheKey block:^(TMCache *cache, NSString *key, id object) {
+                @strongify(self);
+                NSValue * value = object;
+                if (value)
+                {
+                    CGPoint contentOffset;
+                    [value getValue:&contentOffset];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        self.tableView.contentOffset = contentOffset;
+                    });
+                }
+            }];
         }
     }];
 }
@@ -128,9 +163,6 @@
     ICComicImage * comicImage = self.comicPageItems[indexPath.section];
     ComicReaderTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell.contentImg sd_setImageWithURL:[NSURL URLWithString:comicImage.url]];
-    
-    NSString * text =[NSString stringWithFormat:@"%d", (int)indexPath.section+1];
-    cell.titleLab.text = (indexPath.section + 1) % 10 == 0 ? text : nil;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -138,6 +170,7 @@
     ICComicImage * comicImage = self.comicPageItems[indexPath.section];
     return (comicImage.height / comicImage.width) * tableView.width;
 }
+
 //- (UIStatusBarStyle)preferredStatusBarStyle
 //{
 //    return UIStatusBarStyleLightContent;
@@ -150,5 +183,9 @@
     return !_showTopBar;
 }
 
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
+{
+    return UIStatusBarAnimationSlide;
+}
 
 @end

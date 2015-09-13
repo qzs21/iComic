@@ -24,7 +24,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kJw-Cg-0wE">
                                     <size key="itemSize" width="600" height="212"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="10"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -44,34 +44,45 @@
                                                         <constraint firstAttribute="width" constant="80" id="Zff-dZ-W3x"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUx-n7-Y8a">
-                                                    <rect key="frame" x="100" y="10" width="490" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="漫画标题" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUx-n7-Y8a">
+                                                    <rect key="frame" x="100" y="10" width="68" height="20.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBA-UW-c9z">
-                                                    <rect key="frame" x="10" y="143" width="580" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBA-UW-c9z">
+                                                    <rect key="frame" x="10" y="114" width="56" height="33.5"/>
                                                     <animations/>
+                                                    <string key="text">这是简介
+这是简介</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMa-iE-fiL">
-                                                    <rect key="frame" x="515" y="67" width="75" height="30"/>
+                                                    <rect key="frame" x="515" y="62" width="75" height="30"/>
                                                     <animations/>
                                                     <state key="normal" title="阅读第一集">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzS-1V-09Q">
-                                                    <rect key="frame" x="100" y="40" width="490" height="17"/>
+                                                    <rect key="frame" x="100" y="40" width="35.5" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htM-WH-BF4" customClass="ICStarView">
+                                                    <rect key="frame" x="550" y="12" width="40" height="40"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="HRQ-LL-N19"/>
+                                                        <constraint firstAttribute="height" constant="40" id="u4a-df-hJ4"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -81,25 +92,36 @@
                                         <constraints>
                                             <constraint firstItem="xUx-n7-Y8a" firstAttribute="top" secondItem="Mxx-AE-pYt" secondAttribute="top" constant="10" id="2lU-DT-JmN"/>
                                             <constraint firstItem="FBA-UW-c9z" firstAttribute="leading" secondItem="Mxx-AE-pYt" secondAttribute="leading" constant="10" id="4i0-eM-bnO"/>
-                                            <constraint firstAttribute="trailing" secondItem="xUx-n7-Y8a" secondAttribute="trailing" constant="10" id="79K-x1-imK"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xUx-n7-Y8a" secondAttribute="trailing" constant="10" id="79K-x1-imK"/>
                                             <constraint firstAttribute="trailing" secondItem="hMa-iE-fiL" secondAttribute="trailing" constant="10" id="Auu-SH-9lW"/>
                                             <constraint firstItem="bvD-r7-8Ab" firstAttribute="top" secondItem="Mxx-AE-pYt" secondAttribute="top" constant="10" id="BTz-9a-ZRU"/>
                                             <constraint firstItem="xUx-n7-Y8a" firstAttribute="leading" secondItem="bvD-r7-8Ab" secondAttribute="trailing" constant="10" id="DOl-v7-I1j"/>
                                             <constraint firstItem="JzS-1V-09Q" firstAttribute="top" secondItem="xUx-n7-Y8a" secondAttribute="bottom" constant="10" id="a6w-S6-nzr"/>
                                             <constraint firstItem="FBA-UW-c9z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hMa-iE-fiL" secondAttribute="bottom" constant="15" id="bW2-Qh-3Pd"/>
-                                            <constraint firstItem="FBA-UW-c9z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bvD-r7-8Ab" secondAttribute="bottom" constant="15" id="dMg-Py-Nvj"/>
-                                            <constraint firstAttribute="trailing" secondItem="JzS-1V-09Q" secondAttribute="trailing" constant="10" id="eSH-Hp-9KS"/>
+                                            <constraint firstItem="htM-WH-BF4" firstAttribute="top" secondItem="Mxx-AE-pYt" secondAttribute="top" constant="12" id="ckX-xn-hDd"/>
+                                            <constraint firstItem="hMa-iE-fiL" firstAttribute="top" secondItem="htM-WH-BF4" secondAttribute="bottom" constant="10" id="dJb-VW-Stc"/>
+                                            <constraint firstItem="FBA-UW-c9z" firstAttribute="top" secondItem="bvD-r7-8Ab" secondAttribute="bottom" constant="4" id="dMg-Py-Nvj"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JzS-1V-09Q" secondAttribute="trailing" constant="10" id="eSH-Hp-9KS"/>
+                                            <constraint firstAttribute="trailing" secondItem="htM-WH-BF4" secondAttribute="trailing" constant="10" id="gV0-zy-01j"/>
                                             <constraint firstItem="hMa-iE-fiL" firstAttribute="top" secondItem="JzS-1V-09Q" secondAttribute="bottom" constant="10" id="iXj-0a-nTW"/>
-                                            <constraint firstAttribute="trailing" secondItem="FBA-UW-c9z" secondAttribute="trailing" constant="10" id="ptq-NU-h7N"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FBA-UW-c9z" secondAttribute="trailing" constant="10" id="ptq-NU-h7N"/>
                                             <constraint firstAttribute="bottom" secondItem="FBA-UW-c9z" secondAttribute="bottom" constant="10" id="rse-da-xzf"/>
                                             <constraint firstItem="JzS-1V-09Q" firstAttribute="leading" secondItem="bvD-r7-8Ab" secondAttribute="trailing" constant="10" id="tHf-UP-pkd"/>
                                             <constraint firstItem="bvD-r7-8Ab" firstAttribute="leading" secondItem="Mxx-AE-pYt" secondAttribute="leading" constant="10" id="zNj-sn-9xn"/>
                                         </constraints>
                                         <size key="customSize" width="600" height="170"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="bW2-Qh-3Pd"/>
+                                                <exclude reference="rse-da-xzf"/>
+                                                <exclude reference="iXj-0a-nTW"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="iconImageView" destination="bvD-r7-8Ab" id="PPc-Sh-uqf"/>
                                             <outlet property="introductionLabel" destination="FBA-UW-c9z" id="qXh-A3-wez"/>
                                             <outlet property="nameLabel" destination="xUx-n7-Y8a" id="aAr-BC-Rih"/>
+                                            <outlet property="starView" destination="htM-WH-BF4" id="4N5-qA-byW"/>
                                             <outlet property="updateNumLabel" destination="JzS-1V-09Q" id="USX-E0-i10"/>
                                             <outlet property="watchButton" destination="hMa-iE-fiL" id="H8G-hY-YVK"/>
                                         </connections>
@@ -164,11 +186,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="28A-6P-YM3">
-                                    <rect key="frame" x="0.0" y="287.5" width="600" height="10"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="CgK-S3-dkh" id="33r-sp-gfy"/>
                                     <outlet property="delegate" destination="CgK-S3-dkh" id="oRU-qA-b2j"/>

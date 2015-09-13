@@ -33,16 +33,6 @@
             @strongify(self);
             make.edges.equalTo(self.contentView);
         }];
-        
-        // 添加UILabel
-        _titleLab = [[UILabel alloc] init];
-        _titleLab.backgroundColor = [UIColor clearColor];
-        _titleLab.textColor = [UIColor lightGrayColor];
-        [self.contentView addSubview:_titleLab];
-        [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(@4);
-            make.top.equalTo(@4);
-        }];
     }
     return self;
 }

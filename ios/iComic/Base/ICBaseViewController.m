@@ -18,10 +18,15 @@
 
 @implementation ICBaseViewController
 
+- (void)dealloc
+{
+    NSLog(@"%@: dealloc", NSStringFromClass(self.class));
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = ICBackgroundColor;
+    self.view.backgroundColor = [ICColor ic_backgroundColor];
     
     [self do_once_with_key:do_once_in_this_function_key block:^{
         // 全局转换键值对应关系
@@ -35,6 +40,7 @@
     _leftView = [[UIView alloc] init];
     [self.view addSubview:_leftView];
     _leftView.backgroundColor = [UIColor clearColor];
+    _leftView.translatesAutoresizingMaskIntoConstraints = NO;
     [_leftView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@0);
         make.top.equalTo(@0);

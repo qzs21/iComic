@@ -9,14 +9,19 @@
 #import "ICBaseModel.h"
 #import "ICBaseViewController.h"
 
+#define ICAPIDateFormat         @"yyyy-MM-dd HH:mm:ss"
+
 @implementation ICBaseModel
+
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {
     return YES;
 }
+
 @end
 
 @implementation JSONValueTransformer (CustomTransformer)
+
 - (NSDate *)NSDateFromNSString:(NSString*)string {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:ICAPIDateFormat];
@@ -27,4 +32,5 @@
     [formatter setDateFormat:ICAPIDateFormat];
     return [formatter stringFromDate:date];
 }
+
 @end

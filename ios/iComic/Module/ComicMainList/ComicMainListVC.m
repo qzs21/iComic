@@ -145,7 +145,28 @@
 }
 - (void)loadComicListWithSubItem:(ICSubCategoryItem *)subItem block:(ICNetworkDataCenterBlock)block
 {
-    if (subItem.URL)
+    if (self.categoryItemsIndex == 0) // 从缓存加载收藏和最近
+    {
+        switch (self.currentCategoryItem.subCategoryItemsIndex)
+        {
+            case 0:
+            {
+                // 读取最近并刷新界面
+                self.currentCategoryItem.currentSelectedSubCategoryItem.comicItems = (id)[ICComicListItem getHistorys];
+                [self.rightTableView reloadData];
+                break;
+            }
+            case 1:
+            {
+                // 读取收藏并刷新界面
+                self.currentCategoryItem.currentSelectedSubCategoryItem.comicItems = (id)[ICComicListItem getFavorite];
+                [self.rightTableView reloadData];
+                break;
+            }
+            default: break;
+        }
+    }
+    else if (subItem.URL) // 从网络加载列表
     {
         @weakify(self);
         [ICNetworkDataCenter GET:subItem.URL page:subItem.page block:^(id object, BOOL isCache) {
@@ -181,7 +202,7 @@
     /// 导航栏设置
     UISegmentedControl * segmented = [[UISegmentedControl alloc] initWithItems:self.categoryTitleItems];
     segmented.selectedSegmentIndex = self.categoryItemsIndex;
-    segmented.tintColor = ICTintColor;
+    segmented.tintColor = [ICColor ic_tintColor];
     @weakify(self);
     [[segmented rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISegmentedControl * x) {
         @strongify(self);
@@ -261,30 +282,6 @@
         }
     }];
     self.navigationItem.titleView = segmented;
-    
-    
-    
-    if (self.categoryItemsIndex == 0)
-    {
-        switch (self.currentCategoryItem.subCategoryItemsIndex)
-        {
-            case 0:
-            {
-                // 读取最近并刷新界面
-                self.currentCategoryItem.currentSelectedSubCategoryItem.comicItems = (id)[ICComicListItem getHistorys];
-                [self.rightTableView reloadData];
-                break;
-            }
-            case 1:
-            {
-                // 读取收藏并刷新界面
-                self.currentCategoryItem.currentSelectedSubCategoryItem.comicItems = (id)[ICComicListItem getFavorite];
-                [self.rightTableView reloadData];
-                break;
-            }
-            default: break;
-        }
-    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -312,7 +309,7 @@
         cell.textLabel.text = subItem.title;
         cell.textLabel.backgroundColor = cell.contentView.backgroundColor;
         cell.textLabel.textColor = indexPath.row == item.subCategoryItemsIndex ?
-        ICTintColor : [UIColor lightGrayColor];
+        [ICColor ic_tintColor] : [UIColor lightGrayColor];
         return cell;
     }
     else
@@ -321,7 +318,7 @@
         ComicMainListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         cell.titleLab.text = comic.title;
         cell.scoreView.value = comic.score;
-        cell.scoreView.tintColor = ICTintColor;
+        cell.scoreView.tintColor = [ICColor ic_tintColor];
         [cell.thumbnailImg sd_setImageWithURL:[NSURL URLWithString:comic.image.url] placeholderImage:nil];
         return cell;
     }
@@ -353,9 +350,8 @@
         ICComicListItem * comic = item.currentSelectedSubCategoryItem.comicItems[indexPath.row];
         ComicDetailVC * vc = (id)[UIViewController getViewControllerFromStoryboard:@"Detail" key:@"DetailViewController"];
         vc.detail = [[ICComicDetail alloc] initWithDictionary:comic.toDictionary error:nil];
+        vc.listItem = comic;
         [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
-        
-        [ICComicListItem addHistory:comic];
     }
 }
 
@@ -369,7 +365,7 @@
     return UITableViewCellEditingStyleDelete;
 }
 
-- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     ICSubCategoryItem * item = self.currentCategoryItem.currentSelectedSubCategoryItem;
     ICComicListItem * listItem = item.comicItems[indexPath.row];
@@ -387,10 +383,17 @@
     [self.rightTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
-
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    // 保存TableView位置偏移量
+    [self saveScrollViewContentOffset:scrollView];
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    // 保存TableView位置偏移量
+    [self saveScrollViewContentOffset:scrollView];
+}
+- (void)saveScrollViewContentOffset:(UIScrollView *)scrollView
 {
     // 保存TableView位置偏移量
     if (self.leftTableView == scrollView)

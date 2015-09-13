@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ICStarView.h"
+
 @interface DetailIntroductionCollectionViewCell : UICollectionViewCell
 
 ///封面
@@ -21,5 +23,6 @@
 ///观看
 @property(nonatomic, weak) IBOutlet UIButton * watchButton;
 
+@property (weak, nonatomic) IBOutlet ICStarView *starView;
 
 @end

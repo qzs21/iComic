@@ -36,5 +36,7 @@
 + (void)removeAllHistorys;    ///< 删除所有历史
 + (void)removeAllFavorites;   ///< 删除所有收藏
 
++ (BOOL)hasHistory:(ICComicListItem *)item; ///< 是否有此历史纪录
++ (BOOL)hasFavorite:(ICComicListItem *)item; ///< 是否有该收藏纪录
 
 @end
