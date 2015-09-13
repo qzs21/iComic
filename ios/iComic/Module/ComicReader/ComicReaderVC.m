@@ -13,6 +13,9 @@
 @import TMCache;
 
 @interface ComicReaderVC () <UITableViewDataSource, UITableViewDelegate>
+{
+    __strong NSString * _cacheKey;
+}
 
 @property (nonatomic, strong) UITableView * tableView;
 
@@ -20,7 +23,7 @@
 
 @property (nonatomic, assign) BOOL showTopBar; ///< 显示顶部栏
 
-@property (nonatomic, strong) NSString * cacheKey; ///< 缓存Key
+@property (nonatomic, strong, readonly) NSString * cacheKey; ///< 缓存Key
 
 @end
 
@@ -49,6 +52,7 @@
 
 - (NSString *)cacheKey
 {
+    // 缓存上次观看的contentOffset
     if (_cacheKey == nil)
     {
         _cacheKey = [NSString stringWithFormat:@"ComicReaderVC.workid.%@.volumeid.%@", self.episode.workid, self.episode.volumeid];

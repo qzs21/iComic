@@ -11,20 +11,47 @@
 #import "DetailAnthologyCollectionViewCell.h"
 #import "ComicReaderVC.h"
 
+@import TMCache;
+
 @interface ComicDetailVC () <UICollectionViewDelegateFlowLayout>
+{
+    __strong NSString * _cacheKey;
+}
 
 @property (nonatomic, weak) IBOutlet UICollectionView * collectionView;
+
+@property (nonatomic, strong) NSIndexPath * lastReadIndexPath; ///< 最后阅读的IndexPath
 
 @end
 
 @implementation ComicDetailVC
+
+- (NSString *)cacheKey
+{
+    // 缓存上次观看的集数IndexPath的key
+    if (_cacheKey == nil)
+    {
+        _cacheKey = [NSString stringWithFormat:@"ComicDetailVC.workid.%@", self.detail.workid];
+    }
+    return _cacheKey;
+}
+- (void)setLastReadIndexPath:(NSIndexPath *)lastReadIndexPath
+{
+    [[TMCache sharedCache] setObject:lastReadIndexPath forKey:self.cacheKey block:nil];
+}
+- (NSIndexPath *)lastReadIndexPath
+{
+    return [[TMCache sharedCache] objectForKey:self.cacheKey];
+}
+
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self.collectionView];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.title = self.detail.title;
@@ -33,7 +60,8 @@
     @weakify(self);
     [ICNetworkDataCenter GET:ICAPIComicDetail params:@{@"workid": SAVE_STRING(self.detail.workid)} block:^(id object, BOOL isCache) {
         @strongify(self);
-        if (object) {
+        if (object)
+        {
             self.detail = [[ICComicDetail alloc] initWithDictionary:object error:nil];
             [self.collectionView reloadData];
         }
@@ -63,7 +91,8 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
+    switch (indexPath.section)
+    {
         case 0:
         {
             DetailIntroductionCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IntroductionCell" forIndexPath:indexPath];
@@ -72,14 +101,36 @@
             cell.nameLabel.text = self.detail.title;
             cell.updateNumLabel.text = [NSString stringWithFormat:@"共%d集", (int)self.detail.volumecount];
             cell.introductionLabel.text = self.detail.summary;
+            
+            @weakify(self);
+            NSIndexPath * lastReadIndexPath = self.lastReadIndexPath;
+            ICComicEpisode * episode = nil;
+            NSString * text = nil;
+            if (self.detail.volume.count)
+            {
+                if (lastReadIndexPath && lastReadIndexPath.row < self.detail.volume.count)
+                {
+                    episode = self.detail.volume[lastReadIndexPath.row];
+                    text = [NSString stringWithFormat:@"继续%@", episode.title];
+                }
+                else
+                {
+                    episode = self.detail.volume[0];
+                    self.lastReadIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+                    text = [NSString stringWithFormat:@"开始%@", episode.title];
+                }
+            }
+            episode = nil;
+            cell.watchButton.title = text;
+            
             [[[cell.watchButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
-                [SVProgressHUD showErrorWithStatus:@"前方正在施工🚧"];
+                @strongify(self);
+                [self goReaderWithRow:lastReadIndexPath.row];
             }];
             
             // 处理收藏按钮
             BOOL hasStar = [ICComicListItem hasFavorite:self.listItem];
             cell.starView.progress = hasStar ? 1.f : 0.f;
-            @weakify(self);
             [[[cell.starView rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
                 @strongify(self);
                 if (hasStar)
@@ -88,7 +139,6 @@
                 }
                 else
                 {
-                    NSLog(@"addFavorite");
                     [ICComicListItem addFavorite:self.listItem];
                 }
                 [self.collectionView reloadData];
@@ -114,7 +164,8 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat width = collectionView.width;
-    switch (indexPath.section) {
+    switch (indexPath.section)
+    {
         case 0:
         {
             return CGSizeMake(width, 200);
@@ -135,6 +186,19 @@
 }
 
 #pragma mark - UICollectionViewDelegate
+- (void)goReaderWithRow:(NSInteger)row
+{
+    if (row >= self.detail.volume.count)
+    {
+        return;
+    }
+    ComicReaderVC * vc = [[ComicReaderVC alloc] init];
+    vc.episode = self.detail.volume[row];
+    [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
+    
+    // 纪录历史
+    [ICComicListItem addHistory:self.listItem];
+}
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section)
@@ -142,12 +206,11 @@
         case 0: break;
         case 1:
         {
-            ComicReaderVC * vc = [[ComicReaderVC alloc] init];
-            vc.episode = self.detail.volume[indexPath.row];
-            [self.navigationController push:vc animated:UINavigationControllerAnimatedPush];
-            
-            // 纪录历史
-            [ICComicListItem addHistory:self.listItem];
+            [self goReaderWithRow:indexPath.row];
+            self.lastReadIndexPath = indexPath;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+            });
             break;
         }
         default: break;

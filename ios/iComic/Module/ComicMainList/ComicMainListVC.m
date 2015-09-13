@@ -282,6 +282,12 @@
         }
     }];
     self.navigationItem.titleView = segmented;
+    
+    // 第一次显示时，加载初始化数据
+    [self do_once_with_key:do_once_in_this_function_key block:^{
+        @strongify(self);
+        [self loadComicListWithSubItem:self.currentCategoryItem.currentSelectedSubCategoryItem];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
