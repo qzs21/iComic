@@ -12,52 +12,37 @@
 @import NSObjectExtend;
 @import BlocksKit;
 
+/// 更新版本URL
 #define CHECK_NEW_VERSION_URL @"https://github.com/qzs21/iComic/raw/master/config/version.json"
+/// 更新检测间隔
+#define CHECK_NEW_VERSION_DATE 3600
 
 @interface AppDelegate ()
+{
+    __strong AFHTTPRequestOperationManager * _operationManager;
+}
+
+@property (nonatomic, strong, readonly) AFHTTPRequestOperationManager * operationManager;
+
+@property (nonatomic, strong) NSDate * lastUpdateDate;
 
 @end
 
 @implementation AppDelegate
 
+- (AFHTTPRequestOperationManager *)operationManager
+{
+    if (_operationManager == nil)
+    {
+        _operationManager = [AFHTTPRequestOperationManager manager];
+        _operationManager.responseSerializer = [AFHTTPResponseSerializer serializer]; // 更换默认的JSON解析器
+    }
+    return _operationManager;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer]; // 更换默认的JSON解析器
-    [manager GET:CHECK_NEW_VERSION_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSDictionary * data = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        
-        if ([data isKindOfClass:NSDictionary.class])
-        {
-            
-            NSString * build = data[@"base"][@"build"];
-            NSString * version = data[@"base"][@"version"];
-            NSString * info = data[@"base"][@"info"];
-            NSString * url = data[@"base"][@"url"];
-            
-            NSLog(@"[UIDevice appBuildVersion]: %@", [UIDevice appBuildVersion]);
-            NSUInteger currentBuild = [[UIDevice appBuildVersion] integerValue];
-            NSUInteger newBuild = [build integerValue];
-            if (newBuild > currentBuild && url.length)
-            {
-                [[UIAlertView bk_showAlertViewWithTitle:@"有新版本更新哦！"
-                                                message:[NSString stringWithFormat:@"版本:%@(build_%@)\n更新内容:%@", version, build, info]
-                                      cancelButtonTitle:@"取消"
-                                      otherButtonTitles:@[@"更新"]
-                                                handler:^(UIAlertView *alertView, NSInteger buttonIndex)
-                  {
-                      if (buttonIndex)
-                      {
-                          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-                      }
-                  }] show];
-            }
-        }
-    } failure:nil];
-    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     return YES;
 }
 
@@ -77,6 +62,44 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    // 检测更新
+    if ([[NSDate date] timeIntervalSince1970] - [self.lastUpdateDate timeIntervalSince1970] > CHECK_NEW_VERSION_DATE)
+    {
+        self.lastUpdateDate = [NSDate date];
+        
+        [self.operationManager GET:CHECK_NEW_VERSION_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSDictionary * data = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            
+            if ([data isKindOfClass:NSDictionary.class])
+            {
+                
+                NSString * build = data[@"base"][@"build"];
+                NSString * version = data[@"base"][@"version"];
+                NSString * info = data[@"base"][@"info"];
+                NSString * url = data[@"base"][@"url"];
+                
+                NSLog(@"[UIDevice appBuildVersion]: %@", [UIDevice appBuildVersion]);
+                NSUInteger currentBuild = [[UIDevice appBuildVersion] integerValue];
+                NSUInteger newBuild = [build integerValue];
+                if (newBuild > currentBuild && url.length)
+                {
+                    [[UIAlertView bk_showAlertViewWithTitle:@"有新版本更新哦！"
+                                                    message:[NSString stringWithFormat:@"版本:%@(build_%@)\n更新内容:\n%@", version, build, info]
+                                          cancelButtonTitle:@"取消"
+                                          otherButtonTitles:@[@"更新"]
+                                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex)
+                      {
+                          if (buttonIndex)
+                          {
+                              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+                          }
+                      }] show];
+                }
+            }
+        } failure:nil];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

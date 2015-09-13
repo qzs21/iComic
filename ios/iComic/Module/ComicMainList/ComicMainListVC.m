@@ -288,6 +288,12 @@
         @strongify(self);
         [self loadComicListWithSubItem:self.currentCategoryItem.currentSelectedSubCategoryItem];
     }];
+    
+    // 如果时历史或者收藏，返回后刷新列表
+    if (self.categoryItemsIndex == 0)
+    {
+        [self.rightTableView reloadData];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
